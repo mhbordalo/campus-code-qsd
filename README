@@ -1,0 +1,10 @@
+# Projeto Final Quero ser Dev 40+
+
+Neste projeto deve ser implementado um sistema com características similares ao
+contexto da venda de produtos para clientes da Locaweb. Ele será composto por 4
+diferentes aplicações: Sistema de Vendas, Gerenciador de Produtos, Gateway de
+Pagamentos e Painel de Clientes, que em conjunto compõem uma plataforma de vendas de
+serviços como hospedagem, serviços de e-mail, domínios etc. Cada aplicação possui suas
+próprias funcionalidades e regras de negócio, as quais serão descritas abaixo.
+Além de suas próprias telas para cadastro e administração de dados, cada aplicação
+deverá expor e consumir dados das demais via APIs REST através do formato JSON.
