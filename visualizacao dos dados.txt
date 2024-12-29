@@ -1,0 +1,82 @@
+ProductGroup: 
+ - Id: 1 - Name: Hospedagem de Site
+ - Id: 2 - Name: Criador de Site
+ - Id: 3 - Name: Cloud e VPS
+ - Id: 4 - Name: E-mail
+ - Id: 5 - Name: Marketing Digital
+ - id: 6 - Name: Produtividade
+
+Plan:
+ - Id: 1 - Name: Hospedagem Go
+ - ProductGroup_Id: 1 (Hospedagem de Site)
+ - Description: 1 Site / 3 contas de emails (10gb cada) / 1 ano de SSL grátis
+
+ - Id: 2 - Name: Hospedagem I
+ - ProductGroup_Id: 1 (Hospedagem de Site)
+ - Description: Sites ilimitados / 25 contas de e-mails (10gb cada) / 1 anos de SSL grátis
+
+ - Id: 3 - Name: Hospedagem II
+ - ProductGroup_Id: 1 (Hospedagem de Site)
+ - Description: Sites ilimitados / 50 contas de e-mails (10gb cada) / 1 anos de SSL grátis
+
+ - Id: 4 - Name: Email Locaweb
+ - ProductGroup_Id: 4 (E-mail)
+ - Description: Solução eficiente para criar e-mail profissional ou personalizado.
+
+ - Id: 5 - Name: EMAIL GO
+ - ProductGroup_Id: 4 (E-mail)
+ - Description: E-mail com sincronização de contatos e calendário. Tudo num só lugar.
+
+Periodicity:
+ - Id: 1 - Name: Mensal
+ - Id: 2 - Name: Trimestral
+ - Id: 3 - Name: Anual
+ - Id: 4 - Name: Trienal
+ - Id: 5 - Name: Sem Periodicidade
+
+Product:
+ - Id: 1  
+ - ProductGroup_Id: 1 (Hospedagem de Site)
+ - Plan_Id: 1 (Hospedagem Go)
+ - Periodicity_Id: 1 (Anual)
+ - Price: 9.90
+ 
+ - Id: 2
+ - ProductGroup_Id: 1 (Hospedagem de Site)
+ - Plan_Id: 1 (Hospedagem Go)
+ - Periodicity_Id: 2 (Trimestral)
+ - Price: 12.90
+
+ - Id: 3
+ - ProductGroup_Id: 1 (Hospedagem de Site)
+ - Plan_Id: 1 (Hospedagem Go)
+ - Periodicity_Id: 4 (Trienal)
+ - Price: 7.90
+
+ - Id: 4
+ - ProductGroup_Id: 1 (Hospedagem de Site)
+ - Plan_Id: 2 (Hospedagem I)
+ - Periodicity_Id: 1 (Anual)
+ - Price: 15.90
+ 
+ - Id: 5
+ - ProductGroup_Id: 1 (Hospedagem de Site)
+ - Plan_Id: 2 (Hospedagem I)
+ - Periodicity_Id: 2 (Trimestral)
+ - Price: 19.90
+
+ - Id: 6
+ - ProductGroup_Id: 4 (E-mail)
+ - Plan_Id: 4 (Email Locaweb)
+ - Periodicity_Id: 5 (Sem Periodicidade)
+ - Price: 0.64
+
+ - Id: 7
+ - ProductGroup_Id: 4 (E-mail)
+ - Plan_Id: 5 (EMAIL GO)
+ - Periodicity_Id: 5 (Sem Periodicidade)
+ - Price: 8.00
+
+
+
+  

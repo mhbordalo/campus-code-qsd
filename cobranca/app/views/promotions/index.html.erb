@@ -1,0 +1,48 @@
+<h1 class="ls-title-intro ls-ico-home">Promoções</h1>
+
+<div class="ls-list">
+  <header class="ls-list-header">
+    <div class="col-md-9">
+      <div class="ls-list-title ">
+        <a>Promoções Pendentes:</a>
+      </div><br>
+      <div class="ls-list-description">
+        <% if @promotions.pending.any? %>
+          <ul>
+            <% @promotions.pending.each do |promotion| %>
+              <div id="<%= dom_id(promotion) %>">
+                <li>
+                  <%= promotion.name %> - <%= link_to 'Detalhes da promoção', promotion %>
+                </li>
+              </div>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>Não há promoções pendentes.</p>
+        <% end %>
+      </div>
+    </div>
+  </header>
+
+  <header class="ls-list-header">
+    <div class="col-md-9">
+      <div class="ls-list-title ">
+        <a>Promoções Ativas:</a>
+      </div><br>
+      <div class="ls-list-description">
+        <% if @promotions.activated.any? %>
+          <ul>
+            <% @promotions.activated.each do |promotion| %>
+              <div id="<%= dom_id(promotion) %>">
+                <li>
+                  <%= link_to promotion.name, promotion %>
+                </li>
+              </div>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>Não há promoções ativas.</p>
+        <% end %>
+      </div>
+    </div>
+  </header>

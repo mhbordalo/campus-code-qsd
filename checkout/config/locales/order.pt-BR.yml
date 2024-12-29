@@ -1,0 +1,33 @@
+pt-BR:
+  not_found: 'Pedido não encontrado'
+  cant_cancel_order: 'Pedido não pode ser cancelado'
+  pending: 'Pendente'
+  paid: 'Pago'
+  cancelled: 'Cancelado'
+  awaiting_payment: 'Pgto a confirmar'
+  credit_card: 'Cartão de Crédito'
+  activerecord:
+    models:
+      order:
+        one: Pedido
+        other: Pedidos
+    attributes:
+      order:
+        price: Preço
+        product_group_name: Grupo de produtos
+        product_plan_name: Nome do produto
+        product_plan_periodicity: Periodicidade do produto
+        status: Status
+        product_code: Código do produto
+        discount: Desconto
+        payment_mode: Modo de pagamento
+        cancel_reason: Motivo do cancelamento
+        salesman: Vendedor
+        customer_doc_ident: Cliente
+        order_code: Código do Pedido
+        price_after_discount: Preço com desconto
+        created_at: Criado em
+        updated_at: Modificado em
+        paid_at: Pago em
+        coupon_code: Cupom de desconto
+        

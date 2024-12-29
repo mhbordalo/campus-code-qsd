@@ -1,0 +1,11 @@
+<% provide :breadcrumb do %>
+  <ol class="ls-breadcrumb">
+    <% links.each do |link| %>
+      <% if link.second.present? %>
+        <li><%= link_to link.first, link.second %></li>
+      <% else %>
+        <li><%= link.first %></li>
+      <% end %>
+    <% end %>
+  </ol>
+<% end %>

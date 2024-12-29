@@ -1,0 +1,11 @@
+<div class='body'>
+  <div class="ls-container-fluid">
+    <h1>Tornar Conta Inativa</h2>
+
+    <div>Se você deseja tonar a conta inativa, clique no botão abaixo.<br />
+    Esta operação não cancela qualquer cobrança em aberto!</div>
+    
+    <%= button_to "Inativar Minha Conta", users_inactive_path, class: 'ls-btn-primary-danger', data: { confirm: "Você tem certeza?" }, method: :put %>
+
+  </div>
+</div>

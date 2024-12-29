@@ -1,0 +1,80 @@
+<div class="ls-container">
+  <h2 class="ls-registration-new-title">Criar Conta</h2>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="ls-label col-md-6">
+      <%= f.label :name %>
+      <%= f.text_field :name, autofocus: true %>
+    </div>
+
+    <div class="ls-label col-md-6">
+      <%= f.label :identification %>
+      <%= f.text_field :identification  %>
+    </div>
+
+    <div class="ls-label col-md-6">
+      <%= f.label :phone_number %>
+      <%= f.text_field :phone_number, class:"ls-mask-phone9_with_ddd", placeholder:"Ex.: (00) 00000-0000", :data=> {:mask=> '(99) 9 9999-9999'}  %>
+    </div>
+
+    <div class="ls-label col-md-6">
+      <%= f.label :birthdate %>
+      <%= f.date_field :birthdate %>
+    </div>
+  
+    <div class="ls-label col-md-6">
+      <%= f.label :address %>
+      <%= f.text_field :address  %>
+    </div>
+
+    <div class="ls-label col-md-6">
+      <%= f.label :city %>
+      <%= f.text_field :city %>
+    </div>
+
+    <div class="ls-label col-md-6">
+      <%= f.label :state %>
+      <%= f.text_field :state  %>
+    </div>
+
+    <div class="ls-label col-md-6">
+      <%= f.label :zip_code %>
+      <%= f.text_field :zip_code, class:"cep-mask", placeholder:"Ex.: 00000-000", :data=> {:mask=> '99999-999'}  %>
+    </div>
+
+    <div class="ls-label col-md-6">
+        <%= f.label :corporate_name %>
+        <%= f.text_field :corporate_name  %>
+    </div>
+  
+    <div class="ls-label col-md-6">
+      <%= f.label :email %>
+      <%= f.email_field :email, autocomplete: "email" %>
+    </div>
+
+    <div class="ls-label col-md-6">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+        <em>(Mínimo de <%= @minimum_password_length %> caracteres)</em>
+      <% end %>
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div class="ls-label col-md-6">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+    <div class="ls-container ls-d-flex">
+      <div>
+        <%= f.submit "Salvar", class:"ls-btn-primary" %>
+      </div>
+      <div>
+        <%= link_to "Cancelar", new_user_session_path, class: "ls-btn-secondary" %>
+      </div>
+    </div>
+  <% end %>
+  <%= render "devise/shared/links" %>
+</div>
+

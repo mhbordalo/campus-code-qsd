@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Visa",
+    "card_number": "1111 1111 1111 1111",
+    "owner_name": "João José",
+    "validate_month": 12,
+    "validate_year": 26,
+    "cvv": 123,
+    "owner_doc": "999.999.999-99"
+  },
+  {
+    "id": 2,
+    "name": "Mastercard",
+    "card_number": "2222 2222 2222 2222",
+    "owner_name": "João José",
+    "validate_month": 7,
+    "validate_year": 25,
+    "cvv": 123,
+    "owner_doc": "999.999.999-99"
+  },
+  {
+    "id": 3,
+    "name": "Mastercard",
+    "card_number": "3333 3333 3333 3333",
+    "owner_name": "Maria José",
+    "validate_month": 6,
+    "validate_year": 29,
+    "cvv": 456,
+    "owner_doc": "777.777.777-77"
+  }
+]

@@ -1,0 +1,102 @@
+<%= render "stepper" %>
+
+<div class="ls-box">
+  <h3 class="ls-title-4 ls-md-margin-bottom">Confirmação do Pedido</h3>
+
+  <div class="ls-box-filter">
+    <h5 class="ls-title-6">Dados do Cliente</h3>
+  </div>
+
+  <form action class="ls-form-horizontal row">
+    <fieldset class="ls-form-disable ls-form-text">
+      <label class="ls-label col-md-2">
+        <b class="ls-label-text">
+          <%= CreationOrder.human_attribute_name('customer_identification') %>
+        </b>
+        <% %>
+        <input id="customer_identification" type="text" value="<%= @creation_order.customer_identification_formatted %>" disabled="disabled">
+      </label>
+      <label class="ls-label col-md-2">
+        <b class="ls-label-text">
+          <%= CreationOrder.human_attribute_name('customer_name') %>
+        </b>
+        <input id="customer_name" type="text" value="<%= @creation_order.customer_name %>" disabled="disabled">
+      </label>
+      <label class="ls-label col-md-2">
+        <b class="ls-label-text">
+          <%= CreationOrder.human_attribute_name('customer_email') %>
+        </b>
+        <input id="customer_email" type="text" value="<%= @creation_order.customer_email %>" disabled="disabled">
+      </label>
+      <label class="ls-label col-md-2">
+        <b class="ls-label-text">
+          <%= CreationOrder.human_attribute_name('customer_phone') %>
+        </b>
+        <input id="customer_phone" type="text" value="<%= @creation_order.customer_phone %>" disabled="disabled">
+      </label>
+    </fieldset>
+    <fieldset class="ls-form-disable ls-form-text">
+      <label class="ls-label col-md-2">
+        <b class="ls-label-text">
+          <%= CreationOrder.human_attribute_name('customer_address') %>
+        </b>
+        <input id="customer_address" type="text" value="<%= @creation_order.customer_address %>" disabled="disabled">
+      </label>
+      <label class="ls-label col-md-2">
+        <b class="ls-label-text">
+          <%= CreationOrder.human_attribute_name('customer_city') %>
+        </b>
+        <input id="customer_city" type="text" value="<%= @creation_order.customer_city %>" disabled="disabled">
+      </label>
+      <label class="ls-label col-md-2">
+        <b class="ls-label-text">
+          <%= CreationOrder.human_attribute_name('customer_state') %>
+        </b>
+        <input id="customer_state" type="text" value="<%= @creation_order.customer_state %>" disabled="disabled">
+      </label>
+      <label class="ls-label col-md-2">
+        <b class="ls-label-text">
+          <%= CreationOrder.human_attribute_name('customer_zipcode') %>
+        </b>
+        <input id="customer_zipcode" type="text" value="<%= @creation_order.customer_zipcode %>" disabled="disabled">
+      </label>
+    </fieldset>
+  </form>
+
+  <div class="ls-box-filter">
+    <h5 class="ls-title-6">Item do Pedido</h3>
+  </div>
+
+  <table class="ls-table ls-table-striped">
+    <thead>
+      <tr>
+        <th>Produto</th>
+        <th>Plano</th>
+        <th>Periodicidade</th>
+        <th>Preço</th>
+        <th>Desconto</th>
+        <th>Preço Final</th>
+        <th>Cupom</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="order_item">
+        <td><%= @creation_order.product_group_name %></td>
+        <td><%= @creation_order.product_plan_name %></td>
+        <td><%= @creation_order.product_plan_periodicity %></td>
+        <td><%= number_to_currency(@creation_order.product_plan_price) %></td>
+        <td><%= number_to_currency(@creation_order.discount) %></td>
+        <td><%= number_to_currency(@creation_order.product_plan_price.to_f - @creation_order.discount) %></td>
+        <td><%= @creation_order.coupon_code %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <%= form_for @creation_order, class: "ls-form ls-form-horizontal row" do | f | %>
+    <div class="ls-actions-btn">
+      <%= f.submit 'Confirmar Pedido', class: "ls-btn-primary" %>
+      <%= f.submit "Voltar", name: "back_button", class: "ls-btn-primary" unless @creation_order.first_step? %>
+      <%= link_to "Cancelar", orders_path, class: "ls-btn-primary ls-float-right" %>
+    </div>
+  <% end %>
+</div>

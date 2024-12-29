@@ -1,0 +1,45 @@
+<div class='body'>
+  <h1>Lista de Pedidos Pendentes</h1>
+
+  <% if user_signed_in? %>
+      <table class="ls-table ls-table-striped">
+        <thead>
+          <tr class="row">
+            <th class="col-md-3">Produto</th>
+            <th class="col-md-3">Pedido</th>
+            <th class="col-md-2">Status</th>
+            <th class="col-md-2">Preço</th>
+            <th class="col-md-2">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @orders.any? %>
+            <% @orders.each do |order| %>
+              <tr class="hover_line">
+                <td class="col-md-3 h_60"><%= link_to order.product_plan_name, order_path(order.id) %></td>
+                <td class="col-md-3 h_60"><%= order.order_code %></td>
+                <td class="col-md-2 h_60"><%= t(order.status) %></td>
+                <td class="col-md-2 h_60"><%= number_to_currency(order.price) %></td>
+                <td class="col-md-2 h_60 d_flex gap_10">
+                  <% if order.status == 'pending' %>
+                    <%= link_to checkout_order_path(order.id), class: 'ls-btn-primary' do %>
+                      <span class='px_14'>
+                        Pagar
+                      </span>
+                    <%end%>
+                    <%= button_to 'Cancelar', cancel_order_path(order.order_code), class: 'ls-btn-primary-danger' %> 
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td class="col-md-12 h_60 d_flex justify_center align_center">
+                <h3>Não existem pedidos pendentes cadastrados!</h3>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+  <% end %>
+</div>

@@ -1,0 +1,20 @@
+pt-BR:
+  actions: Ações
+  category: Categoria
+  category_successfully_created: Categoria criada com sucesso
+  category_successfully_updated: Categoria atualizada com sucesso
+  categories: Categorias
+  edit: Editar
+  no_category_found: Nenhuma categoria cadastrada
+  not_possible_to_create_category: Não foi possível criar a categoria
+  not_possible_to_update_category: Não foi possível atualizar a categoria
+  save: Salvar
+  you_have_no_permission_to_access_this_page: Você não tem permissão para acessar essa página
+  activerecord:
+    models:
+      call_category:
+        one: Categoria
+        other: Categorias
+    attributes:
+      call_category:
+        description: Descrição

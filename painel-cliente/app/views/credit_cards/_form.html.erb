@@ -1,0 +1,33 @@
+<%= form_with(url: credit_card_create_post, method: :post) do |cc|%>
+  <div>
+  	<%= cc.label :name, 'Bandeira do cartão' %>
+	  <%= cc.text_field :name %>
+  </div>
+  <div>
+  	<%= cc.label :card_number, 'Número do cartão' %>
+	  <%= cc.text_field :card_number %>
+  </div>
+  <div>
+    <%= cc.label :owner_name, 'Nome impresso no cartão' %>
+    <%= cc.text_field :owner_name %>
+  </div>
+  <div>
+    <%= cc.label :validate_month, 'Mês de validade' %>
+    <%= cc.number_field :validate_month %>
+  </div>
+  <div>
+    <%= cc.label :validate_year, 'Ano de validade' %>
+    <%= cc.number_field :validate_year %>
+  </div>
+  <div>
+    <%= cc.label :cvv, 'Código de segurança' %>
+    <%= cc.number_field :cvv %>
+  </div>  
+  <div>
+    <%= cc.label :owner_doc, 'Documento' %>
+    <%= cc.text_field :owner_doc %>
+  </div>  
+  <div>
+    <%= cc.submit "Enviar" %>
+  </div>
+<% end %>

@@ -1,0 +1,56 @@
+<h1 class="ls-title-intro ls-ico-users ls-md-margin-bottom">Vendedores</h1>
+
+<%= link_to 'Criar novo Vendedor', new_user_path, class: 'ls-btn-primary' %>
+
+<div class="ls-box-filter">
+  <%= form_with url: users_path, method: :get, :class => 'ls-form ls-form-inline' do %>
+    <%= label_tag :query, 'Busca', {for: 'name', class: 'ls-label-text ls-hidden-accessible'} %>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag 'Buscar', {class: "ls-btn"} %>
+    <%= link_to 'Limpar pesquisa', users_path, class: "ls-btn" %>
+  <% end %>
+</div>
+
+<% if @users.any? %>
+  <div id="users-list" class="ls-box">
+    <%= paginate @users %>
+
+    <table class="ls-table ls-table-striped">
+      <thead>
+        <tr>
+          <th><%= User.human_attribute_name(:name)%></th>
+          <th><%= User.human_attribute_name(:email)%></th>
+          <th><%= User.human_attribute_name(:admin)%></th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr id="<%= dom_id(user) %>">
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td id="user_admin">
+              <% if user.try(:admin?) %>
+                <span class="ls-ico-checkmark ls-color-theme"></span>
+              <% end %>
+            </td>
+            <td>
+              <div class="ls-display-inline-block ls-md-margin-right">
+                <%= link_to 'Editar', edit_user_path(user), class: 'ls-btn-sm' %>
+              </div>
+              <div class="ls-display-inline-block">
+                <% unless user.try(:admin?) %>
+                  <%= button_to (user.active) ? 'Bloquear':'Desbloquear', lock_unlock_user_path(user), method: :patch, class: 'ls-btn-sm' %>
+                <% end %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <p>Não foram encontrados vendedores utilizando o critério de busca</p>
+<% end %>
+
+<%= link_to 'Voltar', root_path, class: "ls-btn-primary" %>

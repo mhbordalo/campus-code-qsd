@@ -1,0 +1,62 @@
+<%= render 'shared/breadcrumb', links: [
+  ['Início', root_path],
+  [t('activerecord.models.server.other'), servers_path],
+] %>
+
+<div class="ls-box ls-board-box">
+  <header class="ls-info-header">
+    <h2 class="ls-title-3"><%= t("activerecord.models.server.one") %></h2>
+  </header>
+
+  <label class="ls-label col-md-6 col-lg-8">
+    <b class="ls-label-text"><%= t("activerecord.attributes.server.code") %></b>
+    <p class="ls-form-text"><%= @server.code %></p>
+  </label>
+
+  <label class="ls-label col-md-6 col-lg-8">
+    <b class="ls-label-text"><%= t("activerecord.models.product_group.one") %></b>
+    <p class="ls-form-text"><%= @server.product_group.name %></p>
+  </label>
+  
+  <label class="ls-label col-md-6 col-lg-8">
+    <b class="ls-label-text"><%= t("activerecord.attributes.server.operational_system") %></b>
+    <p class="ls-form-text"><%= @server.operational_system.capitalize %></p>
+  </label>
+  
+  <label class="ls-label col-md-6 col-lg-8">
+    <b class="ls-label-text"><%= t("activerecord.attributes.server.os_version") %></b>
+    <p class="ls-form-text"><%= @server.os_version %></p>
+  </label>
+  
+  <label class="ls-label col-md-6 col-lg-8">
+    <b class="ls-label-text"><%= t("activerecord.attributes.server.type_of_storage") %></b>
+    <p class="ls-form-text"><%= @server.type_of_storage.upcase %></p>
+  </label>
+  
+  <label class="ls-label col-md-6 col-lg-8">
+    <b class="ls-label-text"><%= t("activerecord.attributes.server.storage_capacity") %></b>
+    <p class="ls-form-text"><%= @server.storage_capacity %> GB</p>
+  </label>
+
+  <label class="ls-label col-md-6 col-lg-8">
+    <b class="ls-label-text"><%= t("activerecord.attributes.server.number_of_cpus") %></b>
+    <p class="ls-form-text"><%= @server.number_of_cpus %></p>
+  </label>
+
+  <label class="ls-label col-md-6 col-lg-8">
+    <b class="ls-label-text"><%= t("activerecord.attributes.server.amount_of_ram") %></b>
+    <p class="ls-form-text"><%= @server.amount_of_ram %> MB</p>
+  </label>
+
+  <label class="ls-label col-md-6 col-lg-8">
+    <b class="ls-label-text"><%= t("activerecord.attributes.server.max_installations") %></b>
+    <p class="ls-form-text"><%= @server.max_installations %></p>
+  </label>
+
+  <label class="ls-label col-md-6 col-lg-8">
+    <b class="ls-label-text">Instalações Realizadas:</b>
+    <p class="ls-form-text"><%= @instalacoes %></p>
+  </label>
+
+  <%= link_to t("back"), servers_path, class:"ls-btn" %>
+</div>

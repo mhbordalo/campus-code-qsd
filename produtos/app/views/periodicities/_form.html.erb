@@ -1,0 +1,19 @@
+<%= form_with(model: periodicity, html:{class: 'ls-form ls-form-horizontal', id: 'create_periodicity'}) do |f| %>
+  <%= render "shared/error_messages", resource: periodicity %>
+  <div class="row" >
+    <div class="ls-label col-md-6">
+      <%= f.label :name, class:"ls-label-text" %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="ls-label col-md-6" >
+      <%= f.label :deadline %>
+      <%= f.number_field :deadline, placeholder: t(:n_months) %>
+    </div>
+  </div>
+  <div class="row" >   
+    <div class="ls-actions-btn">
+      <%= f.submit t("save"), class:"ls-btn" %>
+      <%= link_to t("cancel"), periodicities_path, class:"ls-btn-danger" %>
+    </div>
+  </div>
+<% end %>

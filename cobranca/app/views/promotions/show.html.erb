@@ -1,0 +1,73 @@
+<h1 class="ls-title-intro ls-ico-home">Detalhes da Promoção</h1>
+<div class="ls-list">
+  <header class="ls-list-header">
+    <div class="col-md-9">
+      <div class="ls-list-title ">
+        <a>Detalhes da promoção</a>
+      </div>
+      <div class="ls-list-description">
+        <ul>
+            <li><%= Promotion.human_attribute_name(:name) %>: <%= @promotion.name %></li>
+            <li><%= Promotion.human_attribute_name(:code) %>: <%= @promotion.code %></li>
+            <li><%= Promotion.human_attribute_name(:user_create) %>: <%= @user_create.email %></li>
+            <% if !@user_aprove.nil? %>
+              <li><%= Promotion.human_attribute_name(:user_aprove) %>: <%= @user_aprove.email %></li><br>
+            <% end %>
+            <li><%= Promotion.human_attribute_name(:start) %>: <%= l(@promotion.start) %></li>
+            <li><%= Promotion.human_attribute_name(:finish) %>: <%= l(@promotion.finish) %></li><br>
+            <li><%= Promotion.human_attribute_name(:discount) %>: <%= @promotion.discount %>%</li>
+            <li><%= Promotion.human_attribute_name(:maximum_discount_value) %>: <%= number_to_currency(@promotion.maximum_discount_value) %></li>
+            <li><%= Promotion.human_attribute_name(:coupon_quantity) %>:  <%= @promotion.coupon_quantity %></li>
+            <li>Produtos da promoção: <%= @promotion.products %> </li><br>
+            <% if @promotion.status == 'pending' %>
+              <%= button_to 'Aprovar promoção', activated_promotion_path(@promotion.id), mehod: :patch, class: 'ls-btn-primary' %>
+            <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-3 ls-txt-right">
+    <% if @promotion.status == 'pending'%>
+      <%= link_to 'Editar', edit_promotion_path, class: 'ls-btn-primary' %>
+    <% end %>
+    </div>
+  </header>
+  <div class="ls-list-content ">
+    <div class="col-xs-12 col-md-6">
+      <span class="ls-list-label">Status</span>
+      <strong><%= t(@promotion.status) %></strong>
+    </div>
+  </div>
+
+  <% if @coupons.any? %>
+    <div class="ls-list-content ">
+      <div class="col-xs-12 col-md-12">
+      <h5>Cupons da promoção</h5>
+      <h5>Total de cupons: <% @coupons.count %></h5>
+        <table class="ls-table">
+        <thead>
+          <tr>
+            <th><%= Coupon.human_attribute_name(:code) %></th>
+            <th class="hidden-xs"><%= Coupon.human_attribute_name(:status) %></th>
+            <th class="hidden-xs"><%= Coupon.human_attribute_name(:created_at) %></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @coupons.each do |coupon|%>
+          <tr>
+            <td><%= coupon.code %></td>
+            <td class="hidden-xs"><%= t(coupon.status) %></td>
+            <td class="hidden-xs"><%= coupon.created_at %></td>
+          </tr>
+        <% end %>
+
+        </tbody>
+        </table>
+      </div>
+    </div>
+  <% end %>
+  <div class='ls-pagination-filter'>
+    <%= paginate @coupons %>
+
+
+  </div>
+</div>

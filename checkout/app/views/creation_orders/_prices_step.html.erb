@@ -1,0 +1,37 @@
+<%= render "stepper" %>
+
+<div class="ls-box">
+  <h3 class="ls-title-4 ls-md-margin-bottom"><%= @creation_order.product_group_name %> / <%= @creation_order.product_plan_name %></h3>
+
+  <% if @creation_order.errors.any? %>
+    <div class="ls-alert-danger ls-dismissable">
+      <span data-ls-module="dismiss" class="ls-dismiss">&times;</span>
+      <p><%= I18n.t('creation_order.msg_order_created_select_one_option') %></p>
+    </div>
+  <% end %>
+
+  <p>Selecione uma das opções abaixo para continuar:</p>
+
+  <% @creation_order.skip_field_error_wrapper = true %>
+  <%= form_for @creation_order, class: "ls-form ls-form-horizontal row" do | f | %>
+    <fieldset>
+      <% @product_plan_prices.each_with_index do |price, index| %>
+        <div class="col-md-3 col-lg-3 col-sm-3">
+          <label id="card_<%= index+1 %>">
+            <%= f.radio_button :product_price_form, "#{price[:id]}##{price[:periodicity]}##{price[:price]}", class: "card-input-element" %>
+              <div class="card-input">
+                <h4 class="ls-txt-center"><%= price[:periodicity] %></h4>
+                <h2 class="ls-md-margin-top ls-txt-center"><%= number_to_currency(price[:price]) %></h2>
+              </div>
+          </label>
+        </div>
+      <% end %>
+    </fieldset>
+
+    <div class="ls-actions-btn">
+      <%= f.submit 'Continuar', disabled: @disable_submit_button, class: "ls-btn-primary" %>
+      <%= f.submit "Voltar", name: "back_button", class: "ls-btn-primary" unless @creation_order.first_step? %>
+      <%= link_to "Cancelar", orders_path, class: "ls-btn-primary ls-float-right" %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,26 @@
+pt-BR:
+  credit_card_flags: Bandeira do cartão
+  validate_year: Ano de validade
+  new_credit_card: Cartão Cadastrado com sucesso!!!
+  labels:
+    card_number: Número do cartão 
+    owner_name: Nome impresso no cartão
+    validate_month: Mês de validade
+    validate_year: Ano de validade
+    cvv: Código de segurança
+    owner_doc: Documento
+  activerecord:
+    models:
+      credit_card:
+        one: Cartão de Crédito
+        other: Cartões de Crédito
+    attributes:
+      credit_card:
+        credit_card_flags: Bandeira do cartão
+        name: Bandeira do cartão
+        card_number: Número do cartão 
+        owner_name: Nome impresso no cartão
+        validate_month: Mês de validade
+        validate_year: Ano de validade
+        cvv: Código de segurança
+        owner_doc: Documento

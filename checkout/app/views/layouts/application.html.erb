@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html class="ls-theme-dark-green ls-html-nobg">
+  <head>
+    <title>Checkout</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= stylesheet_link_tag "application", "//assets.locaweb.com.br/locastyle/edge/stylesheets/locastyle.css" %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+
+  <body>
+    <%= render "layouts/shared/topbar" %>
+    <%= render "layouts/shared/sidebar" %>
+
+    <main class="ls-main">
+      <div id="main" class="container-fluid">
+        <% if notice %>
+          <div id="notice" class="notice ls-md-margin-top ls-alert-success ls-dismissable">
+            <span data-ls-module="dismiss" class="ls-dismiss">&times;</span>
+            <p>
+              <% if notice.class == String %>
+                <%= notice %>
+              <% else %>
+                <% flash[:notice].each do |msg| %>
+                  <%= msg %><br>
+                <% end %>
+              <% end %>
+            </p>
+          </div>
+        <% end %>
+
+        <% if alert %>
+          <div id="alert" class="alert ls-md-margin-top ls-alert-danger ls-dismissable">
+            <span data-ls-module="dismiss" class="ls-dismiss">&times;</span>
+            <p>
+              <% if alert.class == String %>
+                <%= alert %>
+              <% else %>
+                <% flash[:alert].each do |msg| %>
+                  <%= msg %><br>
+                <% end %>
+              <% end %>
+            </p>
+          </div>
+        <% end %>
+
+        <%= yield %>
+      </div>
+    </main>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <%= javascript_include_tag "application", "//assets.locaweb.com.br/locastyle/edge/javascripts/locastyle.js" %>
+  </body>
+</html>

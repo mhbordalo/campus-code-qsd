@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models:
+      charge: 'Cobrança'
+    attributes:
+      charge:
+        charge_status: 'Status da Cobrança'
+        approve_transaction_number: 'Número da aprovação'
+        disapproved_code: 'Código da reprovação'
+        disapproved_reason: 'Motivo da reprovação'
+        client_cpf: 'CPF do Cliente'
+        order_id: 'Ordem de serviço'
+        final_value: 'Valor Final'

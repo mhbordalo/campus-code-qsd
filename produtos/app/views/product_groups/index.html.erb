@@ -1,0 +1,41 @@
+<%= render 'shared/breadcrumb', links: [
+  ['Início', root_path],
+  [t('activerecord.models.product_group.other')],
+] %>
+
+<div class="ls-box ls-board-box">
+  <header class="ls-info-header">
+    <h2 class="ls-title-3"><%= t('activerecord.models.product_group.other') %></h2>
+    <%= btn_new(new_product_group_path) %>
+  </header>
+  <% if @product_groups.any? %>
+    <table class="ls-table">
+      <thead>
+        <tr>
+          <th><%= t('activerecord.attributes.product_group.status') %></th>
+          <th><%= t('activerecord.attributes.product_group.name') %></th>
+          <th><%= t('activerecord.attributes.product_group.code') %></th>
+          <th class="ls-txt-right"><%= t("actions") %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @product_groups.each do |pg| %>
+          <tr id="<%= dom_id(pg) %>">
+            <td><%= product_group_status(pg.status, t("activerecord.attributes.product_group.statuses.#{pg.status}")) %></td>
+            <td><%= pg.name %></td>
+            <td><%= pg.code %></td>
+            <td class="ls-txt-right">
+              <%= link_to_show(pg) %>
+              <%= link_to_edit(edit_product_group_path(pg)) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="ls-alert-danger ls-dismissable">
+      <span data-ls-module="dismiss" class="ls-dismiss">&times;</span>
+      <%= t('warnings.product_group.no_record') %>.
+    </div>
+  <% end %>
+</div>

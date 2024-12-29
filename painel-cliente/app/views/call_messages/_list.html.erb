@@ -1,0 +1,17 @@
+<% if @call_messages.any? %>
+  <div class='message-group'>
+    <% @call_messages.each do |call_message| %>
+      <div class='<%= (call_message.user.administrator?) ? 'admin' : 'client' %>'>
+        <div class="message<%= call_message.id %> message-block"> 
+          <div>
+            <%= call_message.message %>
+          </div>
+          <div>
+            <span><%= l(call_message.created_at, format: '%d/%m/%Y' ' - %H:%M%p - ') %></span>
+            <span><%= call_message.user.name %> (<%= t(call_message.user.role) %>)</span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %> 

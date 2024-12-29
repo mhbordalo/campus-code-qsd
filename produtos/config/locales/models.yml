@@ -1,0 +1,105 @@
+pt-BR:
+  activerecord:
+    models:
+      user:
+        one: Usuário
+        other: Usuários
+      periodicity:
+        one: Periodicidade
+        other: Periodicidades
+      plan:
+        one: Plano
+        other: Planos
+      product_group:
+        one: Grupo de Produto
+        other: Grupos de Produtos
+      price:
+        one: Preço
+        other: Preços
+      server:
+        one: Servidor
+        other: Servidores
+      install_product:
+        one: Instalação de Produtos
+        other: Instalações de Produtos
+
+    attributes:
+      attribute_commons: &commons
+        name: Nome
+        description: Descrição
+        status: Status
+        code: Código
+
+      user:
+        <<: *commons
+        email: E-mail
+      
+      periodicity:
+        <<: *commons
+        deadline: Prazo
+      
+      plan:
+        <<: *commons
+        product_group_id: Grupo de Produtos
+        product_group: Grupo de Produtos
+        details: Detalhes
+        statuses:
+          active: Ativo
+          discontinued: Descontinuado
+          empty: ''
+          
+      product_group:
+        <<: *commons
+        statuses:
+          active: Ativo
+          inactive: Inativo
+
+      price:
+        <<: *commons
+        price: Preço
+        periodicity_id: Periodicidade
+        periodicity: Periodicidade
+        plan_id: Plano
+        plan: Plano
+        statuses:
+          active: Ativo
+          inactive: Inativo
+          key:
+            active: Ativo
+            inactive: Inativo
+
+      server:
+        <<: *commons
+        operational_system: Sistema operacional
+        os_version: Versão do sistema operacional
+        number_of_cpus: Quantidade de CPUs
+        storage_capacity: Capacidade de armazenamento
+        type_of_storage: Tipo de armazenamento
+        amount_of_ram: Quantidade RAM
+        max_installations: Máximo de instalações
+        product_group_id: Grupo de produto
+        product_group: Grupo de produto
+        operational_systems:
+          windows: Windows
+          linux: Linux
+          key:
+            windows: Windows
+            linux: Linux
+        type_of_storages:
+          ssd: SSD
+          hd: HD
+          key:
+            ssd: SSD
+            hd: HD
+
+      install_product:
+        customer_document: Identificação do cliente
+        order_code: Código do pedido
+        server_id: Servidor
+        server: Servidor
+        statuses:
+          active: Ativo
+          inactive: Inativo
+          key:
+            active: Ativo
+            inactive: Inativo

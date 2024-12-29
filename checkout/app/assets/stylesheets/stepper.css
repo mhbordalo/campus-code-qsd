@@ -1,0 +1,91 @@
+.stepper-wrapper {
+  font-family: Open Sans, Arial, Helvetica, Sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.stepper-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.stepper-item::before {
+  position: absolute;
+  content: "";
+  border-bottom: 2px dashed #ccc;
+  width: 100%;
+  top: 20px;
+  left: -50%;
+  z-index: 2;
+}
+
+.stepper-item::after {
+  position: absolute;
+  content: "";
+  border-bottom: 2px dashed #ccc;
+  width: 100%;
+  top: 20px;
+  left: 50%;
+  z-index: 2;
+}
+
+.stepper-item .step-counter {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ccc;
+  margin-bottom: 6px;
+}
+
+.stepper-item.active {
+  font-weight: bold;
+}
+
+.stepper-item.active .step-name {
+  color: #108e67;
+}
+
+.stepper-item.active .step-counter {
+  background-color: #108e67;
+  color: #fff;
+}
+
+.stepper-item.completed .step-counter {
+  border-color: #108e67;
+  background-color: #fff;
+  border: 2px solid #108e67;
+  color: #108e67;
+}
+
+.stepper-item.completed .step-name {
+  color: #108e67;
+}
+
+.stepper-item.completed::after {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #108e67;
+  border-color: #108e67;
+  width: 100%;
+  top: 20px;
+  left: 50%;
+  z-index: 3;
+}
+
+.stepper-item:first-child::before {
+  content: none;
+}
+.stepper-item:last-child::after {
+  content: none;
+}

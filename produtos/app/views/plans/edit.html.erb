@@ -1,0 +1,11 @@
+<%= render 'shared/breadcrumb', links: [
+  ['Início', root_path],
+  [t("activerecord.models.plan.other"), plans_path],
+] %>
+
+<div class="ls-box ls-board-box">
+  <header class="ls-info-header">
+    <h2 class="ls-title-3"><%= t("activerecord.models.plan.one") %></h2>
+  </header>
+  <%= render "form", plan: @plan, product_groups: @product_groups %>
+</div>

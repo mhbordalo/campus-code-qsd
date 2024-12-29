@@ -1,0 +1,40 @@
+<main class="ls-main">
+    <div class="container-fluid" style="margin-top: 20px;">
+        <div class="notice">
+            <% if flash[:notice] %>
+                <div class="ls-alert-success ls-md-space ls-dismissable" role="alert">
+                    <span data-ls-module="dismiss" class="ls-dismiss">&times;</span>
+                    <%= flash[:notice] %>
+                </div>
+            <% end %>
+        </div>
+        <div class="alert">
+            <% if flash[:alert] %>
+                <div class="ls-alert-danger ls-md-space ls-dismissable" role="alert">
+                    <span data-ls-module="dismiss" class="ls-dismiss">&times;</span>
+                    <%= flash[:alert] %>
+                </div>
+            <% end %>
+        </div>
+        <%= yield(:breadcrumb) if content_for?(:breadcrumb) %>
+        <%= yield %>
+    </div>
+</main>
+
+<aside class="ls-sidebar">
+    <div class="ls-sidebar-inner">
+        <a href="#" class="ls-go-prev"><span class="ls-text">Voltar à lista de serviços</span></a>
+        <nav class="ls-menu">
+            <ul>
+                <%# <li class="ls-active"><a href="#" class="ls-ico-dashboard">Dashboard</a></li> %>
+                <%# <li><a href="#" class="ls-ico-image">Item de menu</a></li> %>
+                <li><%= link_to t("activerecord.models.product_group.other"), product_groups_path, class: 'ls-item  ls-ico-panel-hospedagem' %></li>
+                <li><%= link_to t("activerecord.models.plan.other"), plans_path, class: 'ls-item ls-ico-panel-domains' %></li>
+                <li><%= link_to t("activerecord.models.periodicity.other"), periodicities_path, class: 'ls-item ls-ico-panel-backup' %></li>
+                <li><%= link_to t("activerecord.models.price.other"), prices_path, class: "ls-item ls-ico-edit-admin" %></li>
+                <li><%= link_to t("activerecord.models.server.other"), servers_path, class: "ls-item ls-ico-ftp" %></li>
+                <li><%= link_to t("activerecord.models.install_product.other"), install_products_path, class: "ls-item ls-ico-cog" %></li>
+            </ul>
+        </nav>
+    </div>
+</aside>

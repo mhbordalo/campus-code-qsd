@@ -1,0 +1,31 @@
+<h1 class="ls-title-intro ls-md-margin-bottom">Detalhes de Comissões</h1>
+
+<div class="ls-box ls-board-box">
+  <header class="ls-info-header">
+    <h2 class="ls-title-3">Detalhes das comissões no período selecionado para <strong><%= @user.name %></strong></h2>
+     <p class="ls-float-right ls-float-none-xs ls-small-info">
+        <strong><%= period_desc(@start_date, @end_date) %></strong>
+      </p>
+  </header>
+  <%= link_to 'Voltar', :back, class: 'ls-btn-primary' %>
+  <table class="ls-table ls-table-striped">
+    <thead>
+      <tr>
+        <th>Data Pagamento</th>
+        <th>Descrição</th>
+        <th>Pedido</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @paid_commissions.order('paid_at desc').each do |commission| %>
+      <tr id="<%= dom_id(commission) %>">
+        <td><%= I18n.l(commission.paid_at, format: :date) %></td>
+        <td><%= commission.bonus_commission.description  %></td>
+        <td><%= commission.order.order_code %></td>
+        <td><%= number_to_currency(commission.amount) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

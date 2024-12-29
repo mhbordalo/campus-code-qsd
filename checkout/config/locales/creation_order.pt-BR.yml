@@ -1,0 +1,29 @@
+pt-BR:
+  not_found: 'Pedido não encontrado'
+  cant_cancel_order: 'Pedido não pode ser cancelado'
+  pending: 'Pendente'
+  paid: 'Pago'
+  cancelled: 'Cancelado'
+  activemodel:
+    models:
+      creation_order:
+        one: Pedido
+        other: Pedidos
+    attributes:
+      creation_order:
+        customer_identification: CPF (ou CNPJ)
+        customer_name: Nome
+        customer_address: Endereço
+        customer_city: Cidade
+        customer_state: Estado
+        customer_zipcode: CEP
+        customer_email: E-mail
+        customer_phone: Telefone
+        customer_birthdate: Data Nascimento
+        customer_corporate_name: Nome Corporativo
+        product_group_form: Grupo de Produtos
+        product_plan_form: Plano
+        product_price_form: Preço
+        product_plan_periodicity: Periodicidade
+        product_plan_price: Preço
+        coupon_code: Cupom de desconto

@@ -1,0 +1,25 @@
+<% if @call_category.errors.any? %>
+  <ul>
+    <% @call_category.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model: @call_category, class: 'ls-form ls-form-horizontal row') do |f| %>
+  <table class="table ls-table">
+    <tbody>
+      <tr>
+        <td class='label-space'>
+          <%= f.label :description %>
+        </td>
+        <td>
+          <%= f.text_field :description, class: 'ls-field col-md-12' %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <%= f.submit t('save'), class: 'ls-btn-primary green' %>
+  </div>
+<% end %>

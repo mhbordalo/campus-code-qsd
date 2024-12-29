@@ -1,0 +1,30 @@
+/**
+  Component
+**/
+
+.card-input-element {
+  display: none;
+}
+
+.card-input {
+  border-radius: 5px;
+  margin: 10px;
+  padding: 20px;
+  background-color: #D0D0D0;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 1px 1px #2c2c2c;
+}
+
+.card-input:hover {
+  cursor: pointer;
+  background-color: #108e67;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.card-input-element:checked + .card-input {
+   box-shadow: 0 0 3px 3px #2c2c2c;
+   background-color: #108e67;
+   color: #fff;
+}

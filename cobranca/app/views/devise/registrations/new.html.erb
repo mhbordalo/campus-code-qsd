@@ -1,0 +1,22 @@
+<h2 class="">Cadastro</h2>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <fieldset>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <label class="ls-label">
+      <b class="ls-label-text ls-hidden-accessible"><%= f.label :email %></b>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "ls-login-bg-user ls-field-lg", placeholder: "Email" %>
+    </label>
+    <label class="ls-label">
+      <b class="ls-label-text ls-hidden-accessible"><%= f.label :password %></b>
+      <%= f.password_field :password, autocomplete: "new-password", class: "ls-login-bg-password ls-field-lg", placeholder: "Senha" %>
+    </label>
+    <label class="ls-label">
+      <b class="ls-label-text ls-hidden-accessible"><%= f.label :password_confirmation %></b>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "ls-login-bg-password ls-field-lg", placeholder: "Confirmar Senha" %>
+    </label>
+    <%= f.submit "Cadastrar", class: "ls-btn-primary ls-btn-block ls-btn-lg" %>
+    <p class="ls-txt-center ls-login-signup">
+      <%= render "devise/shared/links" %>
+    </p>
+  </fieldset>
+<% end %>

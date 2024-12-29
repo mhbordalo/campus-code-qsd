@@ -1,0 +1,50 @@
+<h1 class="ls-title-intro ls-ico-home">Cobranças Pendentes</h1>
+
+<div class="container-fluid">
+
+  <% if @charges.any? %>
+
+  <table class="ls-table">
+  <thead>
+    <tr>
+      <th>CPF</th>
+      <th>Número do Pedido</th>
+      <th>Valor Final</th>
+      <th>Data de Envio</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @charges.each do | cp | %>
+    <tr id="<%= dom_id(cp) %>">
+      <td><%= cp.client_cpf %></td>
+      <td><%= cp.order %></td>
+      <td><%= number_to_currency(cp.final_value, unit: "R$", separator: ",", delimiter: ".") %></td>
+      <td><%= l(cp.created_at.to_date) %></td>
+      <td><%= link_to "Aprovar", charge_path(cp.id, operation: 'aprovar'), class: "ls-btn-primary" %> </td>
+      <td><%= link_to "Reprovar", charge_path(cp.id, operation: 'reprovar'), class: "ls-btn-danger" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+  <table class="table table-hover">
+
+    <tbody>
+
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <% else %>
+    <hr />
+    <h3>Não existem cobraças pendentes</h3>
+  <% end %>
+
+</div>

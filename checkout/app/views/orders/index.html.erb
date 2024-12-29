@@ -1,0 +1,65 @@
+<h1 class="ls-title-intro ls-ico-cart ls-md-margin-bottom">Pedidos</h1>
+
+<%= link_to 'Criar Pedido', new_creation_order_path, class: 'ls-btn-primary ls-xs-margin-bottom' %>
+
+<div class="ls-box-filter">
+  <%= form_with url: orders_path, method: :get, :class => 'ls-form ls-form-inline' do %>
+    <%= label_tag :query, 'Busca', class: 'ls-label-text ls-hidden-accessible' %>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag 'Buscar', {class: "ls-btn"} %>
+    <%= link_to 'Limpar pesquisa', orders_path, class: "ls-btn" %>
+  <% end %>
+</div>
+
+<% if @orders.any? %>
+  <div id="orders-list" class="ls-box">
+    <%= paginate @orders %>
+
+    <table class="ls-table ls-table-striped">
+      <thead>
+        <tr>
+          <th><%= Order.human_attribute_name(:order_code) %></th>
+          <th class="hidden-xs"><%= Order.human_attribute_name(:salesman) %></th>
+          <th class="hidden-xs"><%= Order.human_attribute_name(:customer_doc_ident) %></th>
+          <th class="hidden-xs"><%= Order.human_attribute_name(:product_plan_name) %></th>
+          <th class="hidden-xs"><%= Order.human_attribute_name(:product_plan_periodicity) %></th>
+          <th class="hidden-xs"><%= Order.human_attribute_name(:price) %></th>
+          <th class="hidden-xs"><%= Order.human_attribute_name(:discount) %></th>
+          <th class="hidden-xs"><%= Order.human_attribute_name(:payment_mode) %></th>
+          <th><%= Order.human_attribute_name(:status) %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr class='order_info' id='order_id_<%=order.id%>'>
+            <td><u><%= link_to order.order_code, order_path(order.id) %></u></td>
+            <td class="hidden-xs"><%= order.salesman.email %></td>
+            <td class="hidden-xs"><%= order.customer_doc_ident %></td>
+            <td class="hidden-xs"><%= order.product_plan_name %></td>
+            <td class="hidden-xs"><%= order.product_plan_periodicity %></td>
+            <td class="hidden-xs"><%= number_to_currency(order.price) %></td>
+            <td class="hidden-xs"><%= number_to_currency(order.discount) %></td>
+            <td class="hidden-xs"><%= order.payment_mode.present? ? I18n.t(order.payment_mode) : '-' %></td>
+            <td>
+              <span class="<%= tag_status(order.status.to_sym) %>"><%= I18n.t(order.status) %></span>            
+            </td>
+            <td>
+              <% if order.pending? %>
+                  <%= button_to 'Cancelar', order_cancel_reason_order_path(order.id), class: "button_cancel ls-btn-primary ls-btn-block", method: :get %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <p class="col-md-6"><%= page_entries_info @orders %></p>
+  </div>
+<% else %>
+  <% if current_user.try(:admin?) %>
+    <p>Não existem pedidos cadastrados.</p>
+  <% else %>
+    <p>Não foram encontrados pedidos cadastrados associados ao seu login.</p>
+  <% end %>
+<% end %>
+
+<%= link_to 'Voltar', root_path, class: "ls-btn-primary" %>

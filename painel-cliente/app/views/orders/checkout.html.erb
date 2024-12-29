@@ -1,0 +1,43 @@
+<div class='ls-container-fluid mt_10 col-md-12 px_14'>
+  <h1 class='mt_10 ls-ico-cart'>Pagamento do Pedido: <%= @order.order_code %></h1>
+
+  <div class='col-md-6 mt_20'>
+    <p class='mt_10 fs_16'>Plano: <%= @order.product_plan_name %></p>
+    <p class='mt_10 fs_16'>Preço: <%= number_to_currency(@order.price) %></p>
+    <p class='mt_10 fs_16'>Periodicidade: <%= @order.product_plan_periodicity %></p>
+  </div>
+
+  <%= form_with(model: @orders, class: "mt_20") do |form| %>
+    <div class="ls-label col-md-6">
+      <div>
+        <%= form.label :token, "#{t('select_credit_card')}:" %>
+        <%= form.collection_select :token, @credit_cards, :token, :credit_card_name, { include_blank: true }, { class: 'ls-custom-select', id: 'token' } %>
+      </div>
+
+      <div>
+        <%= link_to 'Cadastrar Novo Cartão', new_order_credit_card_path(@order.id), class: 'ls-btn-primary' %>
+      </div>
+    </div>
+
+    <div class="ls-label col-md-6"> 
+      <%= form.label :installment do %><%= t('number_of_installments') %>:<% end %>
+      <%= form.number_field :installment %>
+    </div>
+
+    <div class="ls-label col-md-6">
+      <p class="fs_16"><%= t('discount_from_cupom') %>: <%= number_with_precision(@order.discount,precision: 1) %>%</p>
+      <h3>
+        <%= t('total_value_to_pay') %>: <%= number_to_currency(@checkout.final_value) %>
+      </h3>
+    </div>
+
+    <div class="d_flex col-md-6 mt_20 gap_10">
+      <div>
+        <%= form.submit "Confirmar", method: :send, class:"ls-btn-primary" %>
+      </div>
+      <div>
+        <%= link_to "Voltar", orders_path, class: "ls-btn-secondary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

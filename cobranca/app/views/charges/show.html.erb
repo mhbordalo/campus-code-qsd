@@ -1,0 +1,41 @@
+<h1 class="ls-title-intro ls-ico-home">Cobranças Pendentes</h1>
+
+<div class="ls-box ls-sm-space">
+  <h5 class="ls-title-5"><strong>CPF:</strong>  <%= @charge.client_cpf %></h5>
+</div>
+<div class="ls-box ls-sm-space">
+  <h5 class="ls-title-5"><strong>Número do Pedido:</strong>  <%= @charge.order %></h5>
+</div>
+<div class="ls-box ls-sm-space">
+  <h5 class="ls-title-5"><strong>Token do Cartão de Crédito:</strong>  <%= @charge.creditcard_token %></h5>
+</div>
+<div class="ls-box ls-sm-space">
+  <h5 class="ls-title-5"><strong>Valor Final:</strong>  <%= number_to_currency(@charge.final_value, unit: "R$", separator: ",", delimiter: ".") %></h5>
+</div>
+
+<% if @operation == 'reprovar' %>
+  <%= form_with url: "/charges/#{@charge.id}/reproved/", method: :get, id: 'form1' do |c| %>
+      <label class="ls-label col-md-10">
+        <%= c.label "Código de Reprovação", class: 'ls-label-text' %>
+          <div class="ls-custom-select">
+            <%= c.collection_select "code", @reasons, :code, :description, class: 'ls-custom' %>
+          </div>
+      </label>
+
+      <div>
+          <%= c.submit "Reprovar Cobrança", class: 'ls-btn-primary-danger' %>
+      </div>
+  <% end %>
+<% else %>
+  <%= form_with url: "/charges/#{@charge.id}/aproved/", method: :get, id: 'form1' do |c| %>
+      <label class="ls-label col-md-10">
+        <%= c.label :approve_transaction_number, "Código de Aprovação" %>
+        <%= c.number_field :approve_transaction_number, required: true%>
+      </label>
+
+      <div>
+      <%= c.submit "Aprovar Cobrança", class: 'ls-btn-primary-danger' %>
+      </div>
+  <% end %>
+<% end %>
+<%= link_to 'Voltar', :back, class: 'ls-btn-primary-success' %>

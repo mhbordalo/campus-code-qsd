@@ -1,0 +1,80 @@
+<div class='body'>
+  <h1>Lista de produtos</h1>
+
+  <% if user_signed_in? %>
+    <% if @products.any? %>
+      <h2 class="active">Ativos</h2>
+      <table class="ls-table ls-table-striped">
+        <thead class="active">
+          <tr>
+            <th class="col-md-2">Produto</th>
+            <th class="col-md-2">Pedido</th>
+            <th class="col-md-2">Status</th>
+            <th class="col-md-2">Instalação</th>
+            <th class="col-md-2">Data da Compra</th>
+            <% if current_user.client? %>
+              <th class="col-md-2" colspan="2">Ações</th>
+            <% else %>
+              <th class="col-md-2" colspan="2">Cliente</th>
+            <% end%>
+          </tr>
+        </thead>
+        <tbody class="active">
+          <% @products_active.each do |product| %>  
+            <tr class="hover_line">
+              <td class="col-md-2 h_60"><%= link_to product.product_plan_name, product %></td>
+              <td class="col-md-2 h_60"><%= product.order_code %></td>
+              <td class="col-md-2 h_60">
+                <span class="<%= product.status == 'canceled' ? 'font-red' : 'font-green' %>"><%= t(product.status) %></span>
+              </td>
+              <td class="col-md-2 h_60"><%= t(product.installation) %></td>
+              <td class="col-md-2 h_60"><%= l(product.purchase_date) %></td>
+              <td class="col-md-2 d_flex gap_10 h_60">             
+                <%= button_to 'Cancelar', cancel_product_path(product.id), class: 'ls-btn-primary-danger ' if product.status == 'active' &&  current_user.client? %>
+                <%= button_to 'Renovar', renew_product_path(product.id), class: 'ls-btn-primary green' if product.status == 'active'  &&  current_user.client?  %>
+                <%= product.user.name  if current_user.administrator? %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <h2 class="canceled mt_50">Cancelados</h2>
+      <table class="ls-table ls-table-striped">
+        <thead class="canceled">
+          <tr>
+            <th class="col-md-2">Produto</th>
+            <th class="col-md-2">Pedido</th>
+            <th class="col-md-2">Status</th>
+            <th class="col-md-2">Instalação</th>
+            <th class="col-md-2">Data da Compra</th>
+            <% if current_user.administrator? %>
+              <th class="col-md-2" colspan="2">Cliente</th>
+            <% else %>
+              <th class="col-md-2" colspan="2"><span class="opacity_0">...</span></th>
+            <% end%>
+          </tr>
+        </thead>
+        <tbody class="canceled">
+          <% @products_cancelled.each do |product| %>
+            <tr class="hover_line">
+              <td class="col-md-2 h_60"><%= link_to product.product_plan_name, product %></td>
+              <td class="col-md-2 h_60"><%= product.order_code %></td>
+              <td class="col-md-2 h_60">
+                <span class="<%= product.status == 'canceled' ? 'font-red' : 'font-green' %>"><%= t(product.status) %></span>
+              </td>
+              <td class="col-md-2 h_60"><%= t(product.installation) %></td>
+              <td class="col-md-2 h_60"><%= l(product.purchase_date) %></td>
+              <td class="col-md-2 h_60"><%= product.user.name  if current_user.administrator? %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <tr>
+        <td class="col-md-12 h_60 d_flex justify_center align_center">
+          <h3>Não existem produtos instalados!</h3>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,33 @@
+pt-BR:
+  crud:
+    message:
+      select_prompt: "Informe %{model}"
+      confirm_delete: "Tem certeza?"
+    notice:
+      create: "%{model} criado(a) com sucesso."
+      update: "%{model} editado(a) com sucesso."
+      destroy: "%{model} excluído(a) com sucesso."
+    title:
+      index:  "Lista de %{model}"
+      edit:   "Editar %{model}"
+      update: "Editar %{model}"
+      show:   "Exibir %{model}"
+      # new:  "Novo(a) %{model}"
+      new:    "Cadastrar novo %{model}"
+      create: "Novo(a) %{model}"
+      delete: "Excluir %{model}"
+      destroy: "Excluir %{model}"
+    action:
+      index:    "Lista"
+      edit:     "Editar"
+      update:   "Editar"
+      show:     "Exibir"
+      # new:     "Novo(a)"
+      new:      "Cadastrar novo"
+      create:   "Novo(a)"
+      delete:   "Excluir"
+      destroy:  "Excluir"
+      cancel:   "Cancelar"
+      back:     "Voltar"
+      previous: "Anterior"
+      next:     "Próximo"

@@ -1,0 +1,11 @@
+<h1 class="ls-title-intro ls-md-margin-bottom">Cancelamento de Pedido</h1>
+ 
+<%= form_with(model: @order, url: order_cancel_post_order_path, class:'ls-form-horizontal') do |form| %>
+  <div style="margin-top:10px">
+    <%= form.label :cancel_reason, class:"ls-label" %>
+    <%= form.text_area :cancel_reason, size: "60x10" %>
+  </div>
+  <div>
+    <%= form.submit 'Enviar', class: 'ls-btn-dark' %>
+  </div>
+<% end %>

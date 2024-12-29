@@ -1,0 +1,9 @@
+{
+  "card_number": "1234567890123456",
+  "credit_card_flag_id": 1,
+  "validate_month": 12,
+  "validate_year": 28,
+  "cvv": "123",
+  "owner_name": "vulcano s c silva",
+  "owner_doc": "999.999.999-99"
+}

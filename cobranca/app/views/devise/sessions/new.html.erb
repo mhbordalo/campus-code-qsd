@@ -1,0 +1,25 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <fieldset>
+    <label class="ls-label">
+      <b class="ls-label-text ls-hidden-accessible"><%= f.label :email %></b>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "ls-login-bg-user ls-field-lg", placeholder: "Email" %>
+    </label>
+    <label class="ls-label">
+      <b class="ls-label-text ls-hidden-accessible"><%= f.label :password %></b>
+      <div class="ls-prefix-group ls-field-lg">
+        <%= f.password_field :password, autocomplete: "current-password", id: "password_field", class: "ls-login-bg-password", placeholder: "Senha" %>
+        <a class="ls-label-text-prefix ls-toggle-pass ls-ico-eye" data-toggle-class="ls-ico-eye, ls-ico-eye-blocked" data-target="#password_field" href="#"></a>
+      </div>
+    </label>
+    <p>
+      <% if devise_mapping.rememberable? %>
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+      <% end %>
+    </p>
+    <%= f.submit "Entrar",  class: "ls-btn-primary ls-btn-block ls-btn-lg" %>
+    <p class="ls-txt-center ls-login-signup">
+      <%= render "devise/shared/links" %>
+    </p>
+  </fieldset>
+  <% end %>

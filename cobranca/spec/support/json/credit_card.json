@@ -1,0 +1,9 @@
+{
+  "id": 1, 
+  "card_number": "1234567890123456",
+  "validate_month": 12,
+  "validate_year": 30,
+  "cvv": 123,
+  "owner_name": "José da Silva",
+  "owner_doc": "12345678901"
+}

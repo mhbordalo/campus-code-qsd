@@ -1,0 +1,39 @@
+<%= form_with(model: @product_group) do |f| %>
+  <%= render "shared/error_messages", resource: @product_group %>
+
+  <div class="row ls-label">
+    <div class="col-md-6">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="col-md-6">
+      <%= f.label :code %>
+      <%= f.text_field :code %>
+    </div>
+  </div>
+
+  <div class="row ls-label">
+    <div class="col-md-12">
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+  </div>
+
+  <div class="row ls-label">
+    <div class="col-md-12">
+      <%= f.label :status %>
+      <div class="ls-custom-select">
+        <%= f.select(:status, ProductGroup.statuses.keys.map{ |k| [t("activerecord.attributes.product_group.statuses.#{k}"), k] }, {class: 'ls-select', include_blank: true}) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row ls-label">
+    <div class="col-md-12">
+      <%= f.file_field :icon %>
+    </div>
+  </div>
+
+  <%= f.submit t("save"), class:"ls-btn" %>
+  <%= link_to t("cancel"), product_groups_path, class:"ls-btn-danger" %>
+<% end %>

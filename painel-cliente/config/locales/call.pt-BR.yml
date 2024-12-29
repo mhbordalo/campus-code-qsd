@@ -1,0 +1,43 @@
+pt-BR:
+  administrator: Administrador
+  call: Chamado
+  calls: Chamados
+  call_category_id: Categoria
+  call_code: Código
+  call_created_successfully: Chamado criado com sucesso
+  call_successfully_closed: Chamado encerrado com sucesso
+  call_date: Data
+  category: Categoria
+  client: Cliente
+  close: Encerrar
+  close_call: Encerrar Chamado 
+  closed_date: Data do encerramento
+  closed_solved: Encerrado 
+  closed_unsolved: Encerrado com problemas
+  closing_call_error: Erro ao encerrar o chamado
+  code: Código
+  create_call_error: Erro ao criar chamado
+  description: Descrição
+  in_progress: Em atendimento
+  'no': Não
+  no_existing_calls: Não existem chamados
+  no_opened_call: Nenhum chamado aberto
+  open: Aberto
+  opened_date: Data de abertura
+  order: Pedido
+  product: Produto
+  seller: Vendedor
+  subject: Assunto
+  was_your_problem_solved: Seu problema foi resolvido
+  'yes': Sim
+  activerecord:
+    models:
+      call:
+        one: Chamado
+        other: Chamados
+    attributes:
+      call:
+        call_category_id: Categoria
+        description: Descrição
+        subject: Assunto
+        product_id: Produto

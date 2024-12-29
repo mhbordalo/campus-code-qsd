@@ -1,0 +1,44 @@
+<%= form_with(model: plan, html:{class: 'ls-form ls-form-horizontal', id: 'create_plan'}) do |f| %>
+<div class="row">
+  <%= render "shared/error_messages", resource: plan %>
+
+  <div class="ls-label col-md-6">
+    <%= f.label :name, class:"ls-label-text" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="ls-label col-md-6">
+    <%= f.label :description, class:"ls-label-text" %>
+    <%= f.text_field :description %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="ls-label col-md-12">
+    <%= f.label :details, class:"ls-label-text" %>
+    <%= f.text_field :details %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="ls-label col-md-6 col-sm-6">
+    <%= f.label :product_group_id, class:"ls-label-text" %>
+    <div class="ls-custom-select">
+      <%= f.select :product_group_id, product_groups.collect {|product_group| [product_group.name, product_group.id]},{prompt: ''},{ :class => 'ls-select'} %>
+    </div>
+  </div>
+
+  <div class="ls-label col-md-6 col-sm-6">
+    <%= f.label :status, class:"ls-label-text" %>
+    <div class="ls-custom-select">
+      <%= f.select(:status, Plan.statuses.keys.map {|s| [t("activerecord.attributes.plan.statuses.#{s}"), s]}, class: 'ls-select', include_blank: true) %>
+    </div>
+  </div>
+</div>
+
+  <div class="ls-actions-btn">
+    <%= f.submit t("save"), class:"ls-btn" %>
+    <%= link_to t("cancel"), plans_path, class:"ls-btn-danger" %>
+  </div>
+</div>
+<% end %>

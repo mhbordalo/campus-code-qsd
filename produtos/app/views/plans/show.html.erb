@@ -1,0 +1,37 @@
+<%= render 'shared/breadcrumb', links: [
+  ['Início', root_path],
+  [t("activerecord.models.plan.other"), plans_path],
+] %>
+
+<div class="ls-box ls-board-box">
+  <header class="ls-info-header">
+    <h2 class="ls-title-3"><%= t("activerecord.models.plan.one") %></h2>
+  </header>
+
+  <label class="ls-label col-md-6 col-lg-8">
+    <b class="ls-label-text"><%= t("activerecord.attributes.plan.status") %></b>    
+    <p><%= plan_status(@plan.status, t("activerecord.attributes.plan.statuses.#{@plan.status}")) %></p>
+  </label>
+  
+  <label class="ls-label col-md-6 col-lg-8">
+    <b class="ls-label-text"><%= t("activerecord.attributes.plan.name") %></b>
+    <p class="ls-form-text"><%= @plan.name %></p>
+  </label>
+  
+  <label class="ls-label col-md-6 col-lg-8">
+    <b class="ls-label-text"><%= t("activerecord.attributes.plan.description") %></b>
+    <p class="ls-form-text"><%= @plan.description %></p>
+  </label>
+  
+  <label class="ls-label col-md-6 col-lg-8">
+    <b class="ls-label-text"><%= t("activerecord.attributes.plan.details") %></b>
+    <p class="ls-form-text"><%= @plan.details %></p>
+  </label>
+
+  <label class="ls-label col-md-6 col-lg-8">
+    <b class="ls-label-text"><%= t("activerecord.attributes.plan.product_group") %></b>
+    <p class="ls-form-text"><%= @plan.product_group.name %></p>
+  </label>
+
+<%= link_to t("back"), plans_path, class:"ls-btn" %>
+</div>

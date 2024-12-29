@@ -1,0 +1,33 @@
+pt-BR:
+  blocklisted_customer:
+    msg_customer_unblocked: 'Cliente desbloqueado'
+    msg_customer_unblock_fail: 'Não foi possível desbloquear o cliente'
+    msg_customer_blocked:  'Cliente bloqueado com sucesso'
+    msg_customer_block_fail: 'Não foi possivel bloquear o cliente'
+    msg_customer_api_error: 'Problema ao acessar API de clientes'
+  user:
+    msg_record_created: Usuário cadastrado com sucesso
+    msg_user_changed: Alterado com sucesso
+    msg_password_changed: Senha alterada com sucesso
+    msg_user_locked: Usuário bloqueado com sucesso
+    msg_user_unlocked: Usuário desbloqueado com sucesso
+  creation_order:
+    msg_invalid_cpf: CPF inválido
+    msg_invalid_cnpj: CNPJ inválido
+    msg_invalid_value: Deve ser informado um CPF ou CNPJ válido
+    msg_order_created: Pedido criado com sucesso
+    msg_order_created_select_one_option: Deve ser selecionada uma das opções
+    msg_customer_blocklisted: Este cliente está bloqueado para solicitar novos pedidos
+    msg_order_not_created: Ocorreu um problema na criação do pedido
+    msg_customer_data_sent_ok: Dados do cliente enviados com sucesso para o Portal de Clientes
+    msg_customer_api_error: Ocorreu um problema no envio dos dados do cliente para o Portal de Clientes
+    msg_zipcode_wrong_format: deve estar no formato "99999-999"
+    msg_phone_wrong_format: deve estar no formato "(99) 99999-9999" ou "(99) 9999-9999"
+    msg_burn_coupon_api_error: Ocorreu um problema ao confirmar o uso do cupom via API
+    msg_burn_coupon_ok: Confirmação do uso do cupom registrada com sucesso
+  bonus_commission:
+    msg_create_success: Campanha de bonificação cadastrada com sucesso
+    msg_create_unsuccess: Campanha não cadastrada
+    msg_create_unsuccess_start_date: Campanha não cadastrada. Data de início deve estar fora do intervalo de uma campanha ativa.
+    msg_create_unsuccess_end_date: Campanha não cadastrada. Data fim deve estar fora do intervalo de uma campanha ativa.
+    msg_create_unsuccess_interval: Campanha não cadastrada. Intervalo da campanha em cadastro já tem uma campanha ativa.

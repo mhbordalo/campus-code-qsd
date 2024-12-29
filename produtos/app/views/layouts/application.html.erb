@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html class="ls-theme-moss">
+
+<%= render "shared/head" %>
+
+<body>
+
+    <div class="ls-topbar">
+        <div class="ls-notification-topbar">
+            <% if user_signed_in? %>
+                <div data-ls-module="dropdown" class="ls-dropdown ls-user-account">
+                    <a href="#" class="ls-ico-user">
+                        <span class="ls-name"><%= current_user.email %></span>
+                    </a>
+                    <nav class="ls-dropdown-nav ls-user-menu">
+                        <ul>
+                            <%# <li><a href="#">Meus dados</a></li> %>
+                            <li>
+                                <%= link_to 'Sair', destroy_user_session_path %>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            <% end %>
+        </div>
+
+        <span class="ls-show-sidebar ls-ico-menu"></span>
+
+        <h1 class="ls-brand-name">
+            <%= link_to 'Aplicativo de Produtos', root_path, class: 'ls-ico-panel-cloud' %>
+            <%# <a href="#" class="ls-ico-earth">
+                Aplicativo Produto
+            </a> %>
+        </h1>
+
+    </div>
+
+    <%= render "shared/menu" %>
+
+</body>
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/locawebstyle/dist/javascripts/locastyle.js"></script>
+
+</html>

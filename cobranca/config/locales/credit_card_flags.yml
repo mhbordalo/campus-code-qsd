@@ -1,0 +1,20 @@
+pt-BR:
+  activated: "Ativada"
+  deactivated: "Desativada"
+  success_flag_created: "Bandeira cadastrada com sucesso."
+  success_flag_updated: "Bandeira de cartão de crédito atualizada com sucesso."
+  activerecord:
+    models:
+      credit_card_flag: 
+        one: "Bandeira de Cartão de Crédito"
+        other: "Bandeiras de Cartão de Crédito"
+    attributes:
+      credit_card_flag:
+        name: "Nome"
+        rate: "Taxa cobrada (%)"
+        maximum_value: "Valor máximo da taxa cobrada (R$)"
+        maximum_number_of_installments: "Nº máximo de parcelas"
+        cash_purchase_discount: "Desconto"
+        user: "Usuário Responsável"
+        status: "Situação"
+        picture: 'Imagem'

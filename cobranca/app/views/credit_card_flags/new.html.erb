@@ -1,0 +1,12 @@
+<h1 class="ls-title-intro ls-ico-home">Nova Bandeira de cartão</h1>
+<% if(@credit_card_flag.errors.any?) %>
+  <div class="ls-alert-info"><strong>Atenção:</strong> Verifique os erros abaixo.</div>
+  <ul>
+    <% @credit_card_flag.errors.full_messages.each do |msg| %>
+      <li>
+        <div class="ls-alert-warning"><strong>Cuidado:</strong> <%= msg %></div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+<%= render 'form' %>

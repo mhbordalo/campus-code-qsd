@@ -1,0 +1,47 @@
+<%= form_with(model: @credit_card_flag, class: "ls-form row") do |f| %>
+  <div>
+    <label class="ls-label col-md-3">
+      <%= f.label :name, class: "ls-label-text" %>
+      <p class="ls-label-info">Digite o nome da bandeira do cartão</p>
+      <%= f.text_field :name, placeholder: "Nome da bandeira do cartão", class: "ls-field" %>
+    </label>
+  </div>
+  <div>
+    <label class="ls-label col-md-3"></b>
+      <%= f.label :picture, class: "ls-label-text" %>
+      <p class="ls-label-info">Selecione a imagem da bandeira do cartão</p>
+      <%= f.file_field :picture %>
+    </label>
+  </div>
+  <div>
+    <label class="ls-label col-md-3"></b>
+      <%= f.label :rate, class: "ls-label-text" %>
+      <p class="ls-label-info">Digite a taxa cobrada pela operadora</p>
+      <%= f.number_field :rate, placeholder: "Taxa cobrada", class: "ls-field" %>
+    </label>
+  </div>
+  <div>
+    <label class="ls-label col-md-3">
+      <%= f.label :maximum_value, class: "ls-label-text" %>
+      <p class="ls-label-info">Digite o valor máximo da taxa cobrada</p>
+      <%= f.number_field :maximum_value, placeholder: "Valor máximo da taxa cobrada", class: "ls-field" %>
+    </label>
+  </div>
+  <div>
+    <label class="ls-label col-md-3">
+      <%= f.label :maximum_number_of_installments, class: "ls-label-text" %>
+      <p class="ls-label-info">Digite o número máximo de parcelas</p>
+      <%= f.number_field :maximum_number_of_installments, placeholder: "Número máximo de parcelas", class: "ls-field" %>
+    </label>
+  </div>
+  <div class="ls-label col-md-3">
+    <%= f.label :cash_purchase_discount, class: "ls-label-text" %>
+      <p class="ls-label-info">Oferece desconto para compras à vista?</p>
+      <div class="ls-custom-select">
+        <%= f.select :cash_purchase_discount, options_for_select([['Sim', true], ['Não', false]]), class: "ls-select" %>
+      </div>
+  </div>
+  <div class="ls-actions-btn">
+    <%= f.submit 'Enviar', class: "ls-btn-primary ls-btn-lg"%>
+  </div>
+<% end %>

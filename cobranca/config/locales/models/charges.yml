@@ -1,0 +1,24 @@
+pt-BR:
+  pending: 'Pendente'
+  reproved: 'Reprovada'
+  aproved: 'Aprovada'
+  approve_not_found: 'Código de aprovação não informado' 
+  aproved_charge: 'A cobrança foi aprovada com sucesso.'
+  non_aproved_charge: 'Não foi possível alterar o status da cobrança.'
+  reproved_charge: 'A cobrança foi reprovada com sucesso.'
+  non_reproved_charge: 'Não foi possível alterar o status da cobrança.'
+  reproved_charge: 'A cobrança foi reprovada com sucesso.'
+  activerecord:
+    models:
+      charge: 
+        one: "Cobrança"
+        other: "Cobraqnças Pendentes"
+    attributes:
+      charge:
+        charge_status: "Status"
+        approve_transaction_number: "Código de Aprovação"
+        reason_id: "Códifo de Reprovação"
+        disapproved_code: "Código de Reprovação"
+        cash_purchase_discount: "Desconto"
+        final_value: "Valor Final"
+        

@@ -1,0 +1,31 @@
+en:
+  crud:
+    message:
+      select_prompt: "Select %{model}"
+      confirm_delete: "Really delete %{model}?"
+    notice:
+      create: "%{model} sucessfully created."
+      update: "%{model} sucessfully updated."
+      destroy: "%{model} sucessfully deleted."
+    title:
+      index:  "%{model} index"
+      edit:   "Edit %{model}"
+      update: "Edit %{model}"
+      show:   "Show %{model}"
+      new:    "New %{model}"
+      create: "New %{model}"
+      delete: "Delete %{model}"
+      destroy: "Delete %{model}"
+    action:
+      index:    "Index"
+      edit:     "Edit"
+      update:   "Edit"
+      show:     "Show"
+      new:      "New"
+      create:   "New"
+      delete:   "Delete"
+      destroy:  "Delete"
+      cancel:   "Cancel"
+      back:     "Back"
+      previous: "Previous"
+      next:     "Next"

@@ -1,0 +1,49 @@
+<h1 class="ls-title-intro ls-ico-home">Bandeiras de cartão de Crédito</h1>
+<h3>Bandeiras de Cartão de Crédito Ativadas:</h3><br>
+<% if @credit_card_flags.activated.any? %>
+  <div class="ls-list">
+    <header class="ls-list-header">
+      <div class="ls-list-title col-md-9">
+        <ul>
+          <% @credit_card_flags.activated.each do |flag| %>
+            <div id="<%= dom_id(flag) %>">
+              <li>
+                <%= link_to flag.name, flag %>
+              </li>
+              <% if flag.picture.attached? %>
+                <%= image_tag flag.picture %>
+              <% else %>
+                <br>
+              <% end %>
+            </div>
+          <% end %>
+        </ul>
+      </div>
+    </header>
+  </div>
+<% else %>
+  <p> Não há Bandeiras de Cartão de Crédito ativadas cadastradas.</p>
+<% end %>
+<h3>Bandeiras de Cartão de Crédito Desativadas:</h3>
+<% if @credit_card_flags.deactivated.any? %>
+  <div class="ls-list">
+    <header class="ls-list-header">
+      <div class="ls-list-title col-md-9">
+        <ul>
+          <% @credit_card_flags.deactivated.each do |flag| %>
+            <div id="<%= dom_id(flag) %>">
+              <li>
+                <%= link_to flag.name, flag %>
+              </li>
+              <% if !flag.picture.nil? %>
+                <%= image_tag flag.picture %>
+              <% end %>
+            </div>
+          <% end %>
+        </ul>
+      </div>
+    </header>
+  </div>
+<% else %>
+   <div> Não há Bandeiras de Cartão de Crédito desativadas cadastradas.</p>
+<% end %>

@@ -1,0 +1,8 @@
+<%= form_with(url: call_call_messages_path(@call.id), html: { 'data-ls-module': 'form' } ) do |f| %>
+  <div id='message' class='message-field'>
+    <%= f.text_area :message, class: 'ls-textarea-autoresize', rows: 5, placeholder: "Digite aqui uma mensagem ou dúvida!" %>
+  </div>
+  <div>
+    <%= f.submit t('send'), class: 'ls-btn-primary green' %>
+  </div>
+<% end %>

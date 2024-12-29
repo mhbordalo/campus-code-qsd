@@ -1,0 +1,26 @@
+pt-BR:
+  success_promotion_created: "Promoção cadastrada com sucesso."
+  fail_promotion_created: "Não foi possível cadastrar a promoção"
+  aprove_promotion: "Promoção aprovada com sucesso."
+  products_api_fail: "Falha ao acessar API de Produtos"
+  success_promotion_updated: "Promoção atualizada com sucesso."
+  fail_promotion_updated: 'Não foi possível atualizar a promoção.'
+  fail_diferent_user: "A promoção precisa ser aprovada por um usuário diferente daquele que a criou."
+  pending: 'Pendente'
+  activerecord:
+    models:
+      promotion:
+        one: "Promoção"
+        other: "Promoções"
+    attributes:
+      promotion:
+        name: 'Nome'
+        code: 'Código'
+        user_create: 'Criado por'
+        user_aprove: 'Aprovado por'
+        start: 'Data inicial'
+        finish: 'Data final'
+        discount: 'Desconto'
+        maximum_discount_value: 'Valor máximo de desconto'
+        coupon_quantity: 'Quantidade de Cupons'
+        products: 'Produtos'

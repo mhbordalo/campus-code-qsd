@@ -1,0 +1,26 @@
+<%= render "stepper" %>
+
+<div class="ls-box">
+  <h3 class="ls-title-4 ls-md-margin-bottom">Cupom de Desconto</h3>
+
+  <p>Caso queira utilizar um cupom de descontos, informe o código no campo abaixo</p>
+
+  <% @creation_order.skip_field_error_wrapper = true %>
+  <%= form_for @creation_order, class: "ls-form ls-form-horizontal row" do | f | %>
+    <fieldset>
+      <label class="ls-label col-md-4 <%= (@creation_order.errors.empty?)? '':'ls-error' %>">
+        <%= f.label :coupon_code, class: "ls-label-text" %>
+        <%= f.text_field :coupon_code %>
+        <% if ! @creation_order.errors.empty? %>
+          <small class="ls-help-message"><%= @creation_order.errors.first.full_message %></small>
+        <% end %>
+      </label>
+    </fieldset>
+
+    <div class="ls-actions-btn">
+      <%= f.submit 'Continuar', disabled: @disable_submit_button, class: "ls-btn-primary" %>
+      <%= f.submit "Voltar", name: "back_button", class: "ls-btn-primary" unless @creation_order.first_step? %>
+      <%= link_to "Cancelar", orders_path, class: "ls-btn-primary ls-float-right" %>
+    </div>
+  <% end %>
+</div>

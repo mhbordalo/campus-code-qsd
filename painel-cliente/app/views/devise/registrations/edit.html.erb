@@ -1,0 +1,103 @@
+<div class='body'>
+  <h1>Editar Conta</h1>
+
+  <div>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="d_flex">
+        <div class="ls-label col-md-3">
+          <%= f.label :name %>
+          <%= f.text_field :name, autofocus: true, autocomplete: "email" %>
+        </div>
+
+        <div class="ls-label col-md-3">
+          <%= f.label :identification %>
+          <%= f.number_field :identification  %>
+        </div>
+
+        <div class="ls-label col-md-3">
+          <%= f.label :email %>
+          <%= f.email_field :email, autocomplete: "email" %>
+        </div>
+
+        <div class="ls-label col-md-3">
+          <%= f.label :phone_number %>
+          <%= f.text_field :phone_number, class:"ls-mask-phone9_with_ddd", placeholder:"Ex.: (00) 00000-0000", :data=> {:mask=> '(99) 9 9999-9999'}  %>
+        </div>
+
+        <div class="ls-label col-md-3">
+          <%= f.label :birthdate %>
+          <%= f.date_field :birthdate  %>
+        </div>
+      </div>
+
+      <div class="d_flex">
+        <div class="ls-label col-md-3">
+          <%= f.label :corporate_name %>
+          <%= f.text_field :corporate_name  %>
+        </div>
+
+        <div class="ls-label col-md-4">
+          <%= f.label :address %>
+          <%= f.text_field :address  %>
+        </div>
+
+        <div class="ls-label col-md-2">
+          <%= f.label :city %>
+          <%= f.text_field :city  %>
+        </div>
+
+        <div class="ls-label col-md-1">
+          <%= f.label :state %>
+          <%= f.text_field :state  %>
+        </div>
+
+        <div class="ls-label col-md-2">
+          <%= f.label :zip_code %>
+          <%= f.text_field :zip_code, class:"cep-mask", placeholder:"Ex.: 00000-000", :data=> {:mask=> '99999-999'}  %>
+        </div>
+      </div>
+
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="d_flex">
+        <div class="col-md-3">
+          <h4>Alteração de Senha</h4>      
+          <i>(Deixe em branco se não quer alterar a senha)</i>
+        </div>
+        
+        
+      
+        <div class="ls-label col-md-3">
+          <%= f.label :password, "Nova Senha" %> 
+          <%= f.password_field :password, autocomplete: "Nova Senha" %>
+          <% if @minimum_password_length %>
+            <em>Mínimo de <%= @minimum_password_length %> caracteres</em>
+          <% end %>
+        </div>
+
+        <div class="ls-label col-md-3">
+          <%= f.label :password_confirmation, "Confirmar Nova Senha" %>
+          <%= f.password_field :password_confirmation, autocomplete: "Confirmar Nova Senha" %>
+        </div>      
+      </div>
+
+      <div class="d_flex align_end gap_10">
+        <div class="ls-label col-md-6">
+          <%= f.label :current_password, "Senha Atual" %> <i>(É necessário digitar sua senha atual para confirmar alterações)</i>
+          <%= f.password_field :current_password, autocomplete: "Senha Atual" %>
+        </div>
+        <div>
+          <%= f.submit "Salvar", class:"ls-btn-primary green" %>
+        </div>
+        <div>
+          <%= link_to "Cancelar", :back, class: "ls-btn-secondary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

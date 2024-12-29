@@ -1,0 +1,26 @@
+pt-BR:
+  canceled: Cancelado
+  active: Ativo
+  inactive: Inativo
+  account_inactivated_with_success: Sua conta foi inativada com sucesso!
+  accepts_only_text: aceita somente texto
+  activerecord:
+    models:
+      user:
+        one: Cliente
+        other: Clientes
+    attributes:
+      user:
+        name: Nome
+        identification: CPF/CNPJ
+        phone_number: Telefone
+        birthdate: Data Nascimento
+        address: Endereço
+        city: Cidade
+        state: Estado
+        zip_code: Cep
+        corporate_name: Razão Social
+        email: E-mail
+        password: Senha
+        password_confirmation: Confirmar Senha
+        status: Status

@@ -1,0 +1,26 @@
+<div class='ls-container body'>
+  <div class='button-new'>
+    <%= link_to 'Nova Categoria', new_call_category_path, class: 'ls-btn-dark' %>
+  </div>
+
+  <% if @call_categories.any? %>
+    <table class="ls-table">
+      <thead>
+        <tr class="row">
+          <th class="col"><%= t('categories') %></th>
+          <th class="col"><%= t('actions') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @call_categories.each do |call_category| %>
+          <tr class="row">
+            <td class="col"><%= call_category.description %></td>
+            <td class="col"><%= button_to t('edit'), edit_call_category_path(call_category.id), class: 'ls-btn-dark', method: :get %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p><%= t('no_category_found') %></p>
+  <% end %>
+</div>

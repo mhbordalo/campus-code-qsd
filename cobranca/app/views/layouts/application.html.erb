@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cobranca</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <link rel="stylesheet" type="text/css" href="//assets.locaweb.com.br/locastyle/3.10.1/stylesheets/locastyle.css">
+  </head>
+  <body>
+    <div class="ls-topbar ">
+      <!-- Barra de Notificações -->
+      <div class="ls-notification-topbar">
+        <!-- Dropdown com detalhes da conta de usuário -->
+        <div data-ls-module="dropdown" class="ls-dropdown ls-user-account">
+          <% if user_signed_in? %>
+            <a href="#" class="ls-ico-user">
+              <span class="ls-name"><%= current_user.email %></span>
+            </a>
+            <nav class="ls-dropdown-nav ls-user-menu">
+              <ul>
+                <li><%= link_to "Editar Perfil", edit_user_registration_path %></li>
+                <li><%= button_to "Sair", destroy_user_session_path, { method: :delete, class: 'ls-btn ls-btn-lg ls-btn-block ls-bg-black' } %></li>
+              </ul>
+            </nav>
+          <% end %>
+        </div>
+      </div>
+      <span class="ls-show-sidebar ls-ico-menu"></span>
+      <!-- Nome do produto/marca com sidebar -->
+      <h1 class="ls-brand-name">
+        <%= link_to root_path, class: "ls-ico-earth" do %>  
+          Gateway de Pagamento
+        <% end %>
+      </h1>
+      <!-- Nome do produto/marca sem sidebar quando for o pre-painel  -->
+    </div>
+    <aside class="ls-sidebar">
+      <div class="ls-sidebar-inner">
+        <nav class="ls-menu">
+          <ul class='menu'>
+            <li><%= link_to 'Bandeiras de Cartão de Crédito', credit_card_flags_path %></li>
+            <li><%= link_to 'Cadastrar Bandeira', new_credit_card_flag_path %></li>
+            <li><%= link_to 'Cobranças Pendentes', charges_path %></li>
+            <li><%= link_to 'Cadastrar Promoção', new_promotion_path %></li>
+            <li><%= link_to 'Listar Promoções', promotions_path %></li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+    <main class="ls-main ">
+      <div class="container-fluid">
+        <% flash.each do |type, msg| %>
+          <% if type == 'notice' %>
+            <div class="ls-alert-success ls-dismissable notice ls-md-margin-top">
+              <span data-ls-module="dismiss" class="ls-dismiss">&times;</span>
+              <%= msg %>
+            </div>
+          <% end %>
+          <% if type == 'alert' %>
+            <div class="ls-alert-danger ls-dismissable alert ls-md-margin-top">
+              <span data-ls-module="dismiss" class="ls-dismiss">&times;</span>
+              <%= msg %>
+            </div>
+          <% end %>
+        <% end %>
+        <%= yield %>
+      </div>
+    </main>
+    <script src="http://code.jquery.com/jquery-2.0.1.min.js"></script>
+    <!-- Put the JS in your footer, always after jQuery (dependency) -->
+    <script src="//assets.locaweb.com.br/locastyle/3.10.1/javascripts/locastyle.js"></script>
+  </body>
+</html>

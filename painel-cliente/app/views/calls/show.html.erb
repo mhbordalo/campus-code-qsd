@@ -1,0 +1,33 @@
+<div class='body'>
+  <h1><%= t('call') << ' ' << @call.call_code %></h1>
+
+  <div class='button-new'>
+    <%= link_to t('back'), calls_path, class: 'ls-btn-dark' %>
+  </div>
+
+  <div class='call_details'>
+    <div class='call-status <%= @call.status == 'open' ? 'ls-alert-success' : 'ls-alert-danger' %>'>
+      <%= t('status') %>: <%= t(@call.status) %>
+    </div>
+    <div>
+      <strong><%= t('opened_date') %>:</strong> <%= @call.created_at.strftime('%d/%m/%Y') %>
+    </div>
+    <div>
+      <strong><%= t('product') %> - <%= t('order') %>:</strong> <%= @call.product.product_plan_name_plus_order_code %>
+    </div>
+    <div>
+      <strong><%= t('category') %>:</strong> <%= @call.call_category.description %>
+    </div>
+    <div>
+      <strong><%= t('subject') %>:</strong> <%= @call.subject %>
+    </div>
+    <div>
+      <strong><%= t('description') %>:</strong> <%= @call.description %>
+    </div>
+  </div>
+
+  <%= render partial: "call_messages/list" %>
+  <%  if @call.open? %>
+    <%= render partial: "call_messages/form" %>
+  <% end %>
+</div>

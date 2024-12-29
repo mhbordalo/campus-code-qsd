@@ -1,0 +1,187 @@
+<h1 class="ls-title-intro ls-ico-dashboard">Dashboard</h1>
+
+<div id="dashboard">  
+  <% if current_user.try(:admin?) %>
+    <div data-ls-module="collapse" data-target="#0" class="ls-box ls-collapse">
+      <a href="#" class="ls-collapse-header">
+        <h3 class="ls-collapse-title">Filtro
+        <% if @all_salesmen %>
+          inativo (Todos)
+        <% else %>
+          ativo (<%= @salesman.name %>)
+        <% end %>
+        </h3>
+      </a>
+      <div class="ls-collapse-body" id="0">
+        <div class="ls-box-filter">
+          <%= form_with url: dashboard_path, method: :get, class: "ls-form ls-form-inline" do |f| %>
+            <fieldset>
+              <label class="ls-label col-md-8">
+                <% options = options_from_collection_for_select(@salesmen_list,
+                                                                'id',
+                                                                'name',
+                                                                params[:salesman_id].to_i) %>
+                <%= f.label :salesman_id, 'Selecione qual vendedor deseja visualizar: ', class: "ls-label-text" %>
+                <div class="ls-custom-select">
+                  <%= f.select :salesman_id, options, include_blank: 'Todos', class: "ls-select" %>
+                </div>
+              </label>
+              <div class="ls-actions-btn">
+                <%= f.submit 'Atualizar', class: "ls-btn-primary" %>
+              </div>
+            </fieldset>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="ls-box ls-board-box">
+        <header class="ls-info-header">
+          <p class="ls-float-right ls-float-none-xs"> <strong><%= I18n.t('date.month_names')[Time.zone.today.month].capitalize %>/<%= Time.zone.today.year %></strong></p>
+          <h2 class="ls-title-4">Vendas pagas no mês (<%= number_to_currency(@orders_sales_month_by_day_sum) %>)</h2>
+        </header>
+
+        <div class="chart-container">
+          <%= column_chart @orders_sales_month_by_day, prefix: 'R$ ', decimal: ',', round: 2, zeros: true, id: "orders-sales-month-by-day-chart", height: "200px" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="ls-box ls-board-box">
+        <header class="ls-info-header">
+          <p class="ls-float-right ls-float-none-xs"> <strong><%= I18n.l(Time.zone.now, format: :date_time) %></strong></p>
+          <h2 class="ls-title-4">Pedidos no dia (<%= @orders_day_by_status_sum %>)</h2>
+        </header>
+
+        <div id="order-status-stats" class="row">
+          <% if @orders_day_by_status %>
+            <% @orders_day_by_status.each do |order| %>
+              <div class="col-sm-6 col-md-3">
+                <div class="ls-box" style="min-height: 0;">
+                  <div class="ls-box-head">
+                    <h6 class="ls-title-4"><%= order[0] %></h6>
+                  </div>
+                  <div class="ls-box-body" style="min-height: 0;">
+                    <span class="ls-board-data">
+                      <strong><%= order[1] %></strong>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+
+        <% if @orders_day_by_status_sum > 0 %>
+          <div class="chart-container">
+            <%= pie_chart @orders_day_by_status, donut: true, id: "orders-day-status-chart", height: "200px" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="ls-box ls-board-box">
+        <header class="ls-info-header">
+          <p class="ls-float-right ls-float-none-xs"> <strong><%= I18n.t('date.month_names')[Time.zone.today.month].capitalize %>/<%= Time.zone.today.year %></strong></p>
+          <h2 class="ls-title-4">Pedidos no mês (<%= @orders_month_by_status_sum %>)</h2>
+        </header>
+
+        <div id="order-status-stats" class="row">
+          <% if @orders_month_by_status %>
+            <% @orders_month_by_status.each do |order| %>
+              <div class="col-sm-6 col-md-3">
+                <div class="ls-box" style="min-height: 0;">
+                  <div class="ls-box-head">
+                    <h6 class="ls-title-4"><%= order[0] %></h6>
+                  </div>
+                  <div class="ls-box-body" style="min-height: 0;">
+                    <span class="ls-board-data">
+                      <strong><%= order[1] %></strong>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+      </div>
+
+      <div class="chart-container">
+        <%= pie_chart @orders_month_by_status, donut: true, id: "orders-month-status-chart", height: "200px" %>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="ls-box ls-board-box">
+        <header class="ls-info-header">
+          <p class="ls-float-right ls-float-none-xs"> <strong><%= I18n.t('date.month_names')[Time.zone.today.month].capitalize %>/<%= Time.zone.today.year %></strong></p>
+          <h2 class="ls-title-4">Produtos no mês (<%= @orders_month_by_status_sum %>)</h2>
+        </header>
+
+        <div id="order-status-stats" class="row">
+          <% if @orders_month_by_product %>
+            <% @orders_month_by_product.each do |order| %>
+              <div class="col-sm-6 col-md-3">
+                <div class="ls-box" style="min-height: 0;">
+                  <div class="ls-box-head">
+                    <h6 class="ls-title-4"><%= order[0] %></h6>
+                  </div>
+                  <div class="ls-box-body" style="min-height: 0;">
+                    <span class="ls-board-data">
+                      <strong><%= order[1] %></strong>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="chart-container">
+          <%= pie_chart @orders_month_by_product, donut: true, id: "orders-month-products-chart", height: "200px" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="ls-box ls-board-box">
+        <header class="ls-info-header">
+          <p class="ls-float-right ls-float-none-xs"> <strong><%= I18n.t('date.month_names')[Time.zone.today.month].capitalize %>/<%= Time.zone.today.year %></strong></p>
+          <h2 class="ls-title-4">Periodicidades no mês (<%= @orders_month_by_status_sum %>)</h2>
+        </header>
+
+        <div id="order-status-stats" class="row">
+          <% if @orders_month_by_periodicity %>
+            <% @orders_month_by_periodicity.each do |order| %>
+              <div class="col-sm-6 col-md-3">
+                <div class="ls-box" style="min-height: 0;">
+                  <div class="ls-box-head">
+                    <h6 class="ls-title-4"><%= order[0] %></h6>
+                  </div>
+                  <div class="ls-box-body" style="min-height: 0;">
+                    <span class="ls-board-data">
+                      <strong><%= order[1] %></strong>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="chart-container">
+          <%= pie_chart @orders_month_by_periodicity, donut: true, id: "orders-month-periodicity-chart", height: "200px" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ls-sm-margin-bottom">
+  &nbsp;
+</div>

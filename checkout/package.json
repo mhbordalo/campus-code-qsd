@@ -1,0 +1,11 @@
+{
+  "name": "app",
+  "dependencies": {
+    "chart.js": "^4.2.1",
+    "chartkick": "^5.0.1",
+    "esbuild": "^0.17.8"
+  },
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
+  }
+}

@@ -1,0 +1,39 @@
+<% if user_signed_in? %>
+  <div class="ls-box ls-board-box">
+    <header class="ls-info-header">
+      <h2 class="ls-title-3">Base de Dados</h2>
+    </header>
+    <div id="sending-stats" class="row">
+      <div class="col-sm-6 col-md-3">
+        <div class="ls-box">
+          <div class="ls-box-head">
+            <h6 class="ls-title-4" style="color: green">SERVIDORES</h6>
+          </div>
+          <div class="ls-box-body">
+            <strong style="color: green"><%= @server %></strong>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <div class="ls-box">
+          <div class="ls-box-head">
+            <h6 class="ls-title-4" style="color: blue">INSTALAÇÕES</h6>
+          </div>
+          <div class="ls-box-body">
+            <strong style="color: blue"><%= @installproduct %></strong>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <div class="ls-box">
+          <div class="ls-box-head">
+            <h6 class="ls-title-4" style="color: orange">PLANOS</h6>
+          </div>
+          <div class="ls-box-body">
+            <strong style="color: orange"><%= @plan %></strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

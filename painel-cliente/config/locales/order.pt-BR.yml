@@ -1,0 +1,24 @@
+pt-BR:
+  paid: Pago
+  pending: Pendente
+  processing: Aguardando Pagamento
+  canceled: Cancelado
+  error_on_loading_order: Não foi possível carregar o pedido
+  select_credit_card: Selecionar Cartão
+  number_of_installments: Número de Parcelas
+  discount_from_cupom: Desconto via Cupom
+  total_value_to_pay: Valor total a Pagar
+  charge_request_success: Pedido de Pagamento enviado com Sucesso!
+  charge_request_failure: Pagamento não foi aceito, revise os dados e tente novamente!
+  awaiting_payment: "Aguardando pagamento"
+  order_successfully_canceled: Pedido cancelado com sucesso
+  activerecord:
+    models:
+      order:
+        one: Produto
+        other: Produtos
+    attributes:
+      order:
+        order_code: Pedido
+        product_plan_name: Produto
+        seller: Vendedor

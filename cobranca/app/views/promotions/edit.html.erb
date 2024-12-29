@@ -1,0 +1,12 @@
+<h1 class="ls-title-intro ls-ico-home">Cadastro de Promoções</h1>
+<% if(@promotion.errors.any?)%>
+  <p>Verifique os erros abaixo:</p>
+  <ul>
+  <% @promotion.errors.full_messages.each do |msg|%>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+<p>
+  <%= render 'form'%>
+</p>

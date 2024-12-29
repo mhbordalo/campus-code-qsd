@@ -1,0 +1,42 @@
+<div class="ls-box">
+  <h2><%= I18n.t('devise.sessions.new.sign_in') %></h2>
+</div>
+
+<div class="ls-login-parent">
+  <div class="ls-login-inner">
+    <div class="ls-login-container">
+      <div class="ls-login-box">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "ls-form ls-login-form") do |f| %>
+          <fieldset>
+            <label class="ls-label">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, class: "ls-login-bg-user ls-field-lg",
+                                autofocus: true, autocomplete: "email" %>
+            </label>
+
+            <label class="ls-label">
+              <%= f.label :password %>
+              <div class="ls-prefix-group ls-field-lg">
+                <%= f.password_field :password, class: "ls-login-bg-password",
+                                autocomplete: "current-password" %>
+                <a class="ls-label-text-prefix ls-toggle-pass ls-ico-eye" data-toggle-class="ls-ico-eye, ls-ico-eye-blocked"
+                  data-target="#user_password" href="#"></a>
+              </div>
+            </label>
+
+            <% if devise_mapping.rememberable? %>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end %>
+
+            <div class="ls-actions-btn">
+              <%= f.submit I18n.t('devise.sessions.new.sign_in'), class: "ls-btn-primary ls-btn-block ls-btn-lg" %>
+            </div>
+          </fieldset>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

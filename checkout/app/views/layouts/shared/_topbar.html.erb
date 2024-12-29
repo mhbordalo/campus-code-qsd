@@ -1,0 +1,35 @@
+<div class="ls-topbar">
+  <div class="ls-notification-topbar">
+    <div id="user-account" data-ls-module="dropdown" class="ls-dropdown ls-user-account">
+      <% if user_signed_in? %>
+        <a href="#" class="ls-ico-user">
+          <span class="ls-name"><%= current_user.name %></span>
+          (<%= current_user.email %>)
+        </a>
+
+        <nav class="ls-dropdown-nav ls-user-menu">
+          <ul>
+            <li><%= button_to 'Alterar Senha', edit_password_user_path(current_user), method: :get, class: "ls-btn-primary ls-btn-block" %></li>
+            <li><%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "ls-btn-primary ls-btn-block" %></li>
+          </ul>
+        </nav>
+      <% else %>
+        <a href="#" class="ls-ico-user">
+          <span class="ls-name">Não conectado</span>
+        </a>
+
+        <nav class="ls-dropdown-nav ls-user-menu">
+          <ul>
+            <li><%= button_to 'Login', new_user_session_path, method: :get, class: "ls-btn-primary ls-btn-block" %></li>
+          </ul>
+        </nav>
+      <% end %>
+    </div>
+  </div>
+
+  <span class="ls-show-sidebar ls-ico-menu"></span>
+
+  <h1 class="ls-brand-name">
+    <a href="<%= root_path %>" class="ls-ico-chart-bar-up">Sistema de Vendas</a>
+  </h1>
+</div>

@@ -1,0 +1,55 @@
+<%= form_with model: @promotion, class:"ls-form row" do |f| %>
+
+  <fieldset id="promotion_add">
+    <label class="ls-label col-md-4">
+      <b class="ls-label-text"><%= f.label :name %></b>
+      <p class="ls-label-info">Nome da promoção</p>
+      <%= f.text_field :name, required: true %>
+    </label>
+    <label class="ls-label col-md-4">
+      <b class="ls-label-text"><%= f.label :code %></b>
+      <p class="ls-label-info">Código da promoção</p>
+      <%= f.text_field :code, required: true %>
+    </label>
+    <label class="ls-label col-md-4">
+      <b class="ls-label-text"><%= f.label :start %></b>
+      <p class="ls-label-info">Data de início da promoção</p>
+      <%= f.date_field :start %>
+    </label>
+    <label class="ls-label col-md-4">
+      <b class="ls-label-text"><%= f.label :finish %></b>
+      <p class="ls-label-info">Data de final da promoção</p>
+      <%= f.date_field :finish %>
+    </label>
+    <label class="ls-label col-md-4">
+      <b class="ls-label-text"><%= f.label :discount %></b>
+      <p class="ls-label-info">Desconto em percentual</p>
+      <%= f.text_field :discount, required: true %>
+    </label>
+    <label class="ls-label col-md-4">
+      <b class="ls-label-text"><%= f.label :maximum_discount_value %></b>
+      <p class="ls-label-info">Valor máximo do desconto em R$ </p>
+      <%= f.text_field :maximum_discount_value, required: true %>
+    </label>
+    <label class="ls-label col-md-4">
+      <b class="ls-label-text"><%= f.label :coupon_quantity %></b>
+      <p class="ls-label-info">Quantidade total de cupons</p>
+      <%= f.text_field :coupon_quantity, required: true %>
+    </label>
+  <fieldset>
+  <fieldset>
+    <div class="ls-label col-md-4">
+      <p>Selecione os produtos da promoção:</p>
+      <% if @check != "" %>
+      <label class="ls-label-text">
+        <%= f.collection_check_boxes :products, @check, :code, :code, include_hidden: false %>
+      </label>
+      <% else %>
+        <span>Falha ao acessar API de produtos.</span>
+      <% end %>
+    </div>
+    <div>
+      <%= f.submit 'Enviar', class:"ls-btn"%>
+    </div>
+  </fieldset>
+<% end %>

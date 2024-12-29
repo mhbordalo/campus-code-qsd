@@ -1,0 +1,54 @@
+<%= form_with(model: @server, html:{class: 'ls-form ls-form-horizontal', id: 'create_server'}) do |f| %>
+  <%= render "shared/error_messages", resource: @server %>
+  <div class="row">
+    <div class="ls-label col-md-6">
+      <%= f.label :product_group_id, class:"ls-label-text" %>
+      <div class="ls-custom-select">
+        <%= f.select :product_group_id, @product_groups.collect { |pg| [pg.name, pg.id]},{prompt: ''},{ :class => 'ls-select' } %>
+      </div>
+    </div>
+    <div class="ls-label col-md-6">
+      <%= f.label :max_installations, class:"ls-label-number" %>
+      <%= f.number_field :max_installations %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="ls-label col-md-6 col-sm-6">
+      <%= f.label :operational_system, class:"ls-label-text" %>
+      <div class="ls-custom-select">
+        <%= f.select(:operational_system, Server.operational_systems.keys.map{ |k| [t("activerecord.attributes.server.operational_systems.#{k}"), k] }, class: 'ls-select', include_blank: true) %>
+    </div>
+    <div class="ls-label col-md-6">
+      <%= f.label :os_version, class:"ls-label-text" %>
+      <%= f.text_field :os_version %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="ls-label col-md-6">
+      <%= f.label :number_of_cpus, class:"ls-label-number" %>
+      <%= f.number_field :number_of_cpus %>
+    </div>
+    <div class="ls-label col-md-6">
+      <%= f.label :amount_of_ram, class:"ls-label-number" %>
+      <%= f.number_field :amount_of_ram, placeholder: "MB" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="ls-label col-md-6 col-sm-6">
+      <%= f.label :type_of_storage, class:"ls-label-text" %>
+      <div class="ls-custom-select">
+        <%= f.select(:type_of_storage, Server.type_of_storages.keys.map{ |k| [t("activerecord.attributes.server.type_of_storages.#{k}"), k] }, class: 'ls-select', include_blank: true) %>
+      </div>
+    </div>
+    <div class="ls-label col-md-6">
+      <%= f.label :storage_capacity, class:"ls-label-number" %>
+      <%= f.number_field :storage_capacity, placeholder: "GB" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="ls-actions-btn">
+      <%= f.submit t("save"), class:"ls-btn" %>
+      <%= link_to t("cancel"), servers_path, class:"ls-btn-danger" %>
+    </div>
+  </div>
+<% end %>

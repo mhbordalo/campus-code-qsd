@@ -1,0 +1,69 @@
+// Creating tables
+Table Users {
+  id            int     [pk, increment] // auto-increment
+  name          string  [not null]
+  email           string  [not null, unique]
+  admin       boolean [default: false]
+  active        boolean [default: true]
+  created_at    timestamp
+  updated_at    timestamp
+  
+}
+
+Table blocklisted_customers{
+  id                      int [pk, increment] // auto-increment
+  doc_ident               string    [not null, unique]      
+  blocklisted_reason      string    [default: null]
+  created_at              timestamp
+  updated_at              timestamp
+}
+
+Table orders {
+  id                                int     [pk, increment] // auto-increment
+  order_code                        string
+  salesman_id                       integer [ref: > Users.id]
+  customer_doc_ident                string
+  product_plan_name                   string [note: 'fk API']
+  product_plan_periodicity         string [note: 'fk API']
+  product_group_id                 integer
+  product_group_name string
+    product_plan_id integer
+    product_plan_periodicity_id integer
+  price                             decimal [not null]
+  discount                          decimal [default: null]
+  coupon_code                       string
+  payment_mode                      string  [default: null]
+  paid_at                           datetime
+  status                            integer [default: 0, note: '0=pending, 1=cancelled, 2=processed']
+  cancel_reason                     string  [default: null]
+  created_at                        timestamp
+  updated_at                        timestamp
+}
+
+Table paid_comissions {
+  id            int [pk, increment] // auto-increment
+  
+  salesman_id   integer   [ref: > Users.id]
+  paid_at       datetime [not null]
+  amount        decimal   [not null]
+  order_id      integer   [ref: - orders.id]
+  bonus_commission_id      integer   [ref: - bonus_commissions.id, default:null]
+  created_at    timestamp
+  updated_at    timestamp
+}
+
+// THE BONUS IS ALWAYS THE BIGGEST ONE
+// WE SAVE STANDARD BONUS HERE TOO
+Table bonus_commissions {
+  id                  int [ pk, increment] // auto-increment
+  
+  description         string
+  start_date          datetime
+  end_date            datetime
+  commission_perc      decimal [note:'Percent of total sale']
+  amount_limit        decimal [note: 'Total amount per salesman']
+  active              boolean
+  created_at          timestamp
+  updated_at          timestamp
+  
+}

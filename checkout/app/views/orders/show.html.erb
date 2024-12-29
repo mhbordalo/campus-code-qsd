@@ -1,0 +1,164 @@
+<h1 class="ls-title-intro ls-md-margin-bottom">Detalhes do Pedido - <%= @order.order_code %></h1>
+
+<div class="ls-box">
+  <div class="ls-box-filter">
+    <h5 class="ls-title-6">Dados Internos</h3>
+  </div>
+
+  <form action class="ls-form-horizontal row">
+    <fieldset class="ls-form-disable ls-form-text">
+      <label class="ls-label col-md-3">
+        <b class="ls-label-text"><%= Order.human_attribute_name(:salesman) %></b>
+        <input id="salesman" type="text" value="<%= @order.salesman.name %> (<%= @order.salesman.email %>)" disabled="disabled">
+      </label>
+      <label class="ls-label col-md-3">
+        <b class="ls-label-text"><%= Order.human_attribute_name('status') %></b><br>
+        <span id="status" class="<%= tag_status(@order.status.to_sym) %> ls-xs-margin-top"><%= I18n.t(@order.status) %></span>            
+      </label>
+      <% if @order.paid? %>
+        <label class="ls-label col-md-2">
+          <b class="ls-label-text"><%= Order.human_attribute_name('paid_at') %></b>
+          <input id="paid_at" type="text" value="<%= I18n.l(@order.paid_at, format: :date_time) %>" disabled="disabled">
+        </label>
+      <% end %>
+      <label class="ls-label col-md-2">
+        <b class="ls-label-text"><%= Order.human_attribute_name('created_at') %></b>
+        <input id="created_at" type="text" value="<%= I18n.l(@order.created_at, format: :date_time) %>" disabled="disabled">
+      </label>
+      <label class="ls-label col-md-2">
+        <b class="ls-label-text"><%= Order.human_attribute_name('updated_at') %></b>
+        <input id="updated_at" type="text" value="<%= I18n.l(@order.updated_at, format: :date_time) %>" disabled="disabled">
+      </label>
+    </fieldset>
+    <fieldset class="ls-form-disable ls-form-text">
+      <% if @order.cancelled? %>
+        <label class="ls-label col-md-2">
+          <b class="ls-label-text"><%= Order.human_attribute_name('cancel_reason') %></b>
+          <input id="cancel_reason" type="text" value="<%= @order.cancel_reason %>" disabled="disabled">
+        </label>
+      <% end %>
+    </fieldset>
+  </form>
+
+  <div class="ls-box-filter">
+    <h5 class="ls-title-6">Dados do Cliente</h3>
+  </div>
+
+  <form action class="ls-form-horizontal row">
+    <fieldset class="ls-form-disable ls-form-text">
+      <label class="ls-label col-md-3">
+        <b class="ls-label-text">
+          <%= CreationOrder.human_attribute_name('customer_identification') %>
+        </b>
+        <input id="customer_identification" type="text" value="<%= @order.customer_doc_ident_formatted %>" disabled="disabled">
+      </label>
+      <label class="ls-label col-md-3">
+        <b class="ls-label-text">
+          <%= CreationOrder.human_attribute_name('customer_name') %>
+        </b>
+        <input id="customer_name" type="text" value="<%= @customer[:name] %>" disabled="disabled">
+      </label>
+      <label class="ls-label col-md-2">
+        <b class="ls-label-text">
+          <%= CreationOrder.human_attribute_name('customer_email') %>
+        </b>
+        <input id="customer_email" type="text" value="<%= @customer[:email] %>" disabled="disabled">
+      </label>
+      <label class="ls-label col-md-2">
+        <b class="ls-label-text">
+          <%= CreationOrder.human_attribute_name('customer_phone') %>
+        </b>
+        <input id="customer_phone" type="text" value="<%= @customer[:phone] %>" disabled="disabled">
+      </label>
+    </fieldset>
+    <fieldset class="ls-form-disable ls-form-text">
+      <label class="ls-label col-md-3">
+        <b class="ls-label-text">
+          <%= CreationOrder.human_attribute_name('customer_address') %>
+        </b>
+        <input id="customer_address" type="text" value="<%= @customer[:address] %>" disabled="disabled">
+      </label>
+      <label class="ls-label col-md-3">
+        <b class="ls-label-text">
+          <%= CreationOrder.human_attribute_name('customer_city') %>
+        </b>
+        <input id="customer_city" type="text" value="<%= @customer[:city] %>" disabled="disabled">
+      </label>
+      <label class="ls-label col-md-2">
+        <b class="ls-label-text">
+          <%= CreationOrder.human_attribute_name('customer_state') %>
+        </b>
+        <input id="customer_state" type="text" value="<%= @customer[:state] %>" disabled="disabled">
+      </label>
+      <label class="ls-label col-md-2">
+        <b class="ls-label-text">
+          <%= CreationOrder.human_attribute_name('customer_zipcode') %>
+        </b>
+        <input id="customer_zipcode" type="text" value="<%= @customer[:zipcode] %>" disabled="disabled">
+      </label>
+    </fieldset>
+  </form>
+
+  <div class="ls-box-filter">
+    <h5 class="ls-title-6">Item do Pedido</h3>
+  </div>
+
+  <form action class="ls-form-horizontal row">
+    <fieldset class="ls-form-disable ls-form-text">
+      <label class="ls-label col-md-3">
+        <b class="ls-label-text">
+          <%= Order.human_attribute_name(:product_group_name) %>
+        </b>
+        <input id="product_group_name" type="text" value="<%= @order.product_group_name %>" disabled="disabled">
+      </label>
+      <label class="ls-label col-md-3">
+        <b class="ls-label-text">
+          <%= Order.human_attribute_name(:product_plan_name) %>
+        </b>
+        <input id="product_plan_name" type="text" value="<%= @order.product_plan_name %>" disabled="disabled">
+      </label>
+      <label class="ls-label col-md-2">
+        <b class="ls-label-text">
+          <%= Order.human_attribute_name(:product_plan_periodicity) %>
+        </b>
+        <input id="product_plan_periodicity" type="text" value="<%= @order.product_plan_periodicity %>" disabled="disabled">
+      </label>
+      <label class="ls-label col-md-2">
+        <b class="ls-label-text">
+          <%= Order.human_attribute_name(:payment_mode) %>
+        </b>
+        <input id="payment_mode" type="text" value="<%= @order.payment_mode.present? ? I18n.t(@order.payment_mode) : '-' %>" disabled="disabled">
+      </label>
+    </fieldset>
+    <fieldset class="ls-form-disable ls-form-text">
+      <label class="ls-label col-md-3">
+        <b class="ls-label-text">
+          <%= Order.human_attribute_name(:price) %>
+        </b>
+        <input id="price" type="text" value="<%= number_to_currency(@order.price) %>" disabled="disabled">
+      </label>
+      <label class="ls-label col-md-3">
+        <b class="ls-label-text">
+          <%= Order.human_attribute_name(:discount) %>
+        </b>
+        <input id="discount" type="text" value="<%= number_to_currency(@order.discount) %>" disabled="disabled">
+      </label>
+      <label class="ls-label col-md-2">
+        <b class="ls-label-text">
+          <%= Order.human_attribute_name('price_after_discount') %>
+        </b>
+        <input id="price_after_discount" type="text" value="<%= number_to_currency(@order.price_after_discount) %>" disabled="disabled">
+      </label>
+      <label class="ls-label col-md-2">
+        <b class="ls-label-text">
+          <%= Order.human_attribute_name('coupon_code') %>
+        </b>
+        <input id="coupon_code" type="text" value="<%= @order.coupon_code %>" disabled="disabled">
+      </label>
+    </fieldset>
+  </form>
+
+  <div class="ls-actions-btn">
+    <%= link_to "Voltar", orders_path, class: "ls-btn-primary" %>
+  </div>
+</div>

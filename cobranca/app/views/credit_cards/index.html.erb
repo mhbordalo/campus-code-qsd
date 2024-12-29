@@ -1,0 +1,13 @@
+<h1>Gateway de Pagamento</h1>
+
+<% if @credit_cards.empty? %>
+  <p>Nenhum cartão de crédito encontrado</p>
+<% end %>
+
+<%= @credit_cards.each do |c| %>
+  <p>Cartão de Crédito: <%= link_to c["card_number"], credit_card_path(c["id"]) %></p>
+  <p>Data de validade(mês/ano) :<%= c["validate_month"] %>/<%= c["validate_year"] %></p>
+  <p>Código de segurança: <%= c["cvv"] %></p>
+  <p>Nome do titular: <%= c["owner_name"] %></p>
+  <p>CPF do titular: <%= c["owner_doc"] %></p>
+<% end %>

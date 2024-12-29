@@ -1,0 +1,68 @@
+<h1 class="ls-title-intro ls-ico-stats ls-md-margin-bottom">Relatório de Comissões</h1>
+
+<div class="ls-box">
+  <div class="ls-display-block ls-sm-margin-bottom">
+    <h4>Pesquisar comissões de vendedores</h4>
+  </div>
+
+  <%= form_with url: paid_commissions_path, method: :get, :class => 'ls-form ls-form-inline ls-float-left'  do %>
+    <%= label_tag :search_salesman, 'Nome vendedor:',
+          {for: 'name', class: 'ls-display-block ls-label ls-text-sm ls-md-margin-top ls-sm-margin-bottom'} %>
+    <%= text_field_tag :search_salesman, params[:search_salesman] || '' %>
+    <fieldset>
+      <label class="ls-label col-md-2">
+        <%= label_tag :start_date, 'Data inicial:',
+              { class: 'ls-display-block ls-label ls-text-sm ls-md-margin-top ls-sm-margin-bottom'} %>
+        <%= date_field_tag :start_date, params[:start_date] || '' %>
+      </label>
+      <label class="ls-label col-md-2">
+        <%= label_tag :end_date, 'Data final:',
+              { class: 'ls-display-block ls-label ls-text-sm ls-md-margin-top ls-sm-margin-bottom'} %>
+        <%= date_field_tag :end_date, params[:end_date] || '' %>
+      </label>
+    </fieldset>
+    <div class="ls-actions-btn ls-md-margin-top">
+      <%= submit_tag 'Buscar', {class: "ls-btn-primary"} %>
+      <%= link_to 'Limpar pesquisa', paid_commissions_path,  class: "ls-btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
+<% unless @paid_commissions.nil? %>
+  <div class="ls-box ls-board-box">
+    <header class="ls-info-header">
+      <h2 class="ls-title-3">Comissões acumuladas no período selecionado</h2>
+      <p class="ls-float-right ls-float-none-xs ls-small-info">
+        <strong><%= period_desc(@start_date, @end_date) %></strong>
+      </p>
+    </header>
+
+    <table class="ls-table ls-table-striped">
+      <thead>
+        <tr>
+          <th>Vendedor</th>
+          <th>Valor</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @paid_commissions.sort_by{|user, value| user.name}.each do |user, sum_amount| %>
+        <tr id="<%= dom_id(user) %>">
+          <td><%= user.name  %></td>
+          <td><%= number_to_currency(sum_amount) %></td>
+          <td>
+            <div class="ls-display-inline-block">
+              <%= link_to 'Detalhes', salesman_detail_paid_commissions_path({user_id: user.id,
+                                                                      start_date: @start_date,
+                                                                      end_date: @end_date}),
+                                                                      class: 'ls-btn-primary-sm' %>
+            </div>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+ <% else %>
+  <p>Não foram encontrados registros que satisfaçam essa pesquisa.</p>
+<% end %>

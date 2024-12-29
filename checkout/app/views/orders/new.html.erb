@@ -1,0 +1,22 @@
+<% unless defined?(customer) %>
+  <%= form_with url: prefil_order_form_orders_path, method: :get, class: "ls-form ls-form-horizontal row" do | f | %>
+    <label class="ls-label col-md-5">
+      <%= f.label 'CPF ou CNPJ do cliente', class: "ls-label-text" %>
+      <%= f.text_field :customer_ident %> 
+    </label>
+    <%= f.submit 'Pesquisar cliente', class: "ls-btn-primary" %>
+  <% end %>
+<% else %>
+  <p>renderize o form de pedido usando os dados de customer p/ pre-preencher o form</p>
+  <div>
+    <h4 class="ls-title-md">Cliente:</h4>
+  <%= customer[:data] %>
+  <p></p>
+  </div>
+    <h4 class="ls-title-md" >Produtos:</h4>
+  <% products[:data].each do |product| %>
+  <div>
+  <%= product %>
+  </div>
+  <% end %>
+<% end %>

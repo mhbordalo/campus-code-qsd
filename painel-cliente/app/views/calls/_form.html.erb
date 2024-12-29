@@ -1,0 +1,31 @@
+<% if @call.errors.any? %>
+  <ul class='messages'>
+    <% @call.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model: @call, class: 'ls-form ls-form-horizontal row') do |f| %>
+  <table class="table ls-table">
+    <tr>
+      <th class='label-space'><%= f.label :product_id, "#{t('product')} - #{t('order')}" %></th>
+      <td><%= f.collection_select :product_id, @products, :id, :product_plan_name_plus_order_code, { include_blank: true }, class: 'ls-custom-select' %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :call_category_id, t('category') %></th>
+      <td><%= f.collection_select :call_category_id, @call_categories, :id, :description, { include_blank: true }, class: 'ls-custom-select select-space' %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :subject, t('subject') %></th>
+      <td><%= f.text_field :subject, class: 'ls-field col-md-12' %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :description, t('description') %></th>
+      <td><%= f.text_area :description, class: 'ls-textarea-autoresize col-md-12', rows: 5 %></td>
+    </tr>
+  </table>
+  <div>
+    <%= f.submit t('save'), class: 'ls-btn-primary green' %>
+  </div>
+<% end %>

@@ -1,0 +1,45 @@
+pt-BR:
+  messages:
+    periodicity:
+      register:
+        success: 'Periodicidade cadastrada com sucesso.'
+        fail: 'Não foi possível cadastrar periodicidade.'
+      update:
+        success: 'Periodicidade atualizada com sucesso.'
+        fail: 'Não foi possível atualizar periodicidade.'
+
+    plan:
+      register:
+        success: 'Plano cadastrado com sucesso.'
+        fail: 'Não foi possível cadastrar plano.'
+      update:
+        success: 'Plano atualizado com sucesso.'
+        fail: 'Não foi possível atualizar plano.'
+      errors:
+        check_errors: 'Erros encontrados'
+
+    product_group:
+      register:
+        success: 'Grupo de produtos cadastrado com sucesso.'
+        fail: 'Não foi possível cadastrar grupo de produtos.'
+      update:
+        success: 'Grupo de produtos atualizado com sucesso.'
+        fail: 'Não foi possível atualizar grupo de produtos.'
+
+    price:
+      register:
+        success: 'Preço cadastrado com sucesso.'
+        fail: 'Não foi possível cadastrar preço.'
+      update:
+        success: 'Preço atualizado com sucesso.'
+        fail: 'Não foi possível atualizar preço.'
+
+    server:
+      register:
+        success: 'Servidor cadastrado com sucesso.'
+        fail: 'Não foi possível cadastrar servidor.'
+      update:
+        success: 'Servidor atualizado com sucesso.'
+        fail: 'Não foi possível atualizar servidor.'
+      install:
+        full_servers: 'Não há servidores disponíveis'

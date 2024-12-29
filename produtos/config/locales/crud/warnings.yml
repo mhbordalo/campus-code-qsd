@@ -1,0 +1,6 @@
+pt-BR:
+  warnings:
+    product_group:
+      no_record: Não há Grupos de Produtos cadastrados
+  errors:
+    check_errors: Verifique os Erros abaixo

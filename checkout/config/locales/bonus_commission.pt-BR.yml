@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models:
+      bonus_commission:
+        one: Campanha de bonificação
+        other: Campanhas de bonificação
+    attributes:
+      bonus_commission:
+        description: Nome da campanha de bonificação
+        start_date: Data de início
+        end_date: Data fim
+        commission_perc: Percentual de comissão
+        amount_limit: Limite de comissão

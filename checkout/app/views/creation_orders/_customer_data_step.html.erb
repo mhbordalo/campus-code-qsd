@@ -1,0 +1,109 @@
+<%= render "stepper" %>
+
+<div class="ls-box">
+  <h3 class="ls-title-4 ls-md-margin-bottom">Dados do cliente</h3>
+
+  <%= form_with model: @creation_order, class: "ls-form ls-form-horizontal row" do | f | %>
+    <fieldset>
+      <label class="ls-label col-md-2 <%= (@creation_order.errors[:customer_identification].empty?)? '':'ls-error' %>">
+        <%= f.label :customer_identification, class: "ls-label-text" %>
+        <%= f.text_field :customer_identification, readonly: true, disabled: @creation_order.customer_exists %>
+        <% if ! @creation_order.errors[:customer_identification].empty? %>
+          <small class="ls-help-message"><%= @creation_order.errors.where(:customer_identification).first.full_message %></small>
+        <% end %>
+      </label>
+      <label class="ls-label col-md-4 <%= (@creation_order.errors[:customer_name].empty?)? '':'ls-error' %>">
+        <%= f.label :customer_name, class: "ls-label-text" %>
+        <%= f.text_field :customer_name, disabled: @creation_order.customer_exists %>
+        <% if ! @creation_order.errors[:customer_name].empty? %>
+          <small class="ls-help-message"><%= @creation_order.errors.where(:customer_name).first.full_message %></small>
+        <% end %>
+      </label>
+    </fieldset>
+    <fieldset>
+      <label class="ls-label col-md-4 <%= (@creation_order.errors[:customer_address].empty?)? '':'ls-error' %>">
+        <%= f.label :customer_address, class: "ls-label-text" %>
+        <%= f.text_field :customer_address, disabled: @creation_order.customer_exists %>
+        <% if ! @creation_order.errors[:customer_address].empty? %>
+          <small class="ls-help-message"><%= @creation_order.errors.where(:customer_address).first.full_message %></small>
+        <% end %>
+      </label>
+      <label class="ls-label col-md-2 <%= (@creation_order.errors[:customer_city].empty?)? '':'ls-error' %>">
+        <%= f.label :customer_city, class: "ls-label-text" %>
+        <%= f.text_field :customer_city, disabled: @creation_order.customer_exists %>
+        <% if ! @creation_order.errors[:customer_city].empty? %>
+          <small class="ls-help-message"><%= @creation_order.errors.where(:customer_city).first.full_message %></small>
+        <% end %>
+      </label>
+      <label class="ls-label col-md-2 <%= (@creation_order.errors[:customer_state].empty?)? '':'ls-error' %>">
+        <%= f.label :customer_state, class: "ls-label-text" %>
+        <% if @creation_order.customer_exists %>
+          <%= f.text_field :customer_state, disabled: true %>
+        <% else %>
+          <div class="ls-custom-select">
+          <%= f.select :customer_state, ApplicationHelper::BRAZILIAN_STATES,
+                                        selected: @creation_order.customer_state,
+                                        include_blank: true,
+                                        class: "ls-select" %>
+          </div>
+          <% if ! @creation_order.errors[:customer_state].empty? %>
+            <small class="ls-help-message"><%= @creation_order.errors.where(:customer_state).first.full_message %></small>
+          <% end %>
+        <% end %>
+      </label>
+      <label class="ls-label col-md-2 <%= (@creation_order.errors[:customer_zipcode].empty?)? '':'ls-error' %>">
+        <%= f.label :customer_zipcode, class: "ls-label-text" %>
+        <%= f.text_field :customer_zipcode, disabled: @creation_order.customer_exists %>
+        <% if ! @creation_order.errors[:customer_zipcode].empty? %>
+          <small class="ls-help-message"><%= @creation_order.errors.where(:customer_zipcode).first.full_message %></small>
+        <% end %>
+      </label>
+    </fieldset>
+    <fieldset>
+      <label class="ls-label col-md-4 <%= (@creation_order.errors[:customer_email].empty?)? '':'ls-error' %>">
+        <%= f.label :customer_email, class: "ls-label-text" %>
+        <%= f.email_field :customer_email, disabled: @creation_order.customer_exists %>
+        <% if ! @creation_order.errors[:customer_email].empty? %>
+          <small class="ls-help-message"><%= @creation_order.errors.where(:customer_email).first.full_message %></small>
+        <% end %>
+      </label>
+      <label class="ls-label col-md-2 <%= (@creation_order.errors[:customer_phone].empty?)? '':'ls-error' %>">
+        <%= f.label :customer_phone, class: "ls-label-text" %>
+        <%= f.text_field :customer_phone, disabled: @creation_order.customer_exists %>
+        <% if ! @creation_order.errors[:customer_phone].empty? %>
+          <small class="ls-help-message"><%= @creation_order.errors.where(:customer_phone).first.full_message %></small>
+        <% end %>
+      </label>
+      <% if @creation_order.customer_cpf? %>
+        <label class="ls-label col-md-2 <%= (@creation_order.errors[:customer_birthdate].empty?)? '':'ls-error' %>">
+          <%= f.label :customer_birthdate, class: "ls-label-text" %>
+          <% if @creation_order.customer_birthdate.nil? || @creation_order.customer_birthdate.empty? %>
+            <input type="date" name="creation_order[customer_birthdate]" id="creation_order_customer_birthdate" />
+          <% else %>
+            <%= f.date_field :customer_birthdate, value: Date.parse(@creation_order.customer_birthdate), disabled: @creation_order.customer_exists %>
+          <% end %>
+          <% if ! @creation_order.errors[:customer_birthdate].empty? %>
+            <small class="ls-help-message"><%= @creation_order.errors.where(:customer_birthdate).first.full_message %></small>
+          <% end %>
+        </label>
+      <% end %>
+    </fieldset>
+    <% if @creation_order.customer_cnpj? %>
+      <fieldset>
+        <label class="ls-label col-md-4 <%= (@creation_order.errors[:customer_corporate_name].empty?)? '':'ls-error' %>">
+          <%= f.label :customer_corporate_name, class: "ls-label-text" %>
+          <%= f.text_field :customer_corporate_name, disabled: @creation_order.customer_exists %>
+          <% if ! @creation_order.errors[:customer_corporate_name].empty? %>
+            <small class="ls-help-message"><%= @creation_order.errors.where(:customer_corporate_name).first.full_message %></small>
+          <% end %>
+        </label>
+      </fieldset>
+    <% end %>
+
+    <div class="ls-actions-btn">
+      <%= f.submit 'Continuar', class: "ls-btn-primary" %>
+      <%= f.submit "Voltar", name: "back_button", class: "ls-btn-primary" unless @creation_order.first_step? %>
+      <%= link_to "Cancelar", orders_path, class: "ls-btn-primary ls-float-right" %>
+    </div>
+  <% end %>
+</div>

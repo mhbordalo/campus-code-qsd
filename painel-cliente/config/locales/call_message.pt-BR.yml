@@ -1,0 +1,14 @@
+pt-BR:
+  create_call_message_error: Erro ao criar a mensagem do chamado
+  message: Mensagem
+  save: Salvar
+  send: Enviar
+  you_have_no_permission_to_access_this_page: Você não tem permissão para acessar essa página
+  activerecord:
+    models:
+      call_message:
+        one: Mensagem
+        other: Mensagens
+    attributes:
+      call_message:
+        message: Mensagem

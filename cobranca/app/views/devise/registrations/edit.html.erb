@@ -1,0 +1,45 @@
+<h2>Editar <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <fieldset>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <label class="ls-label">
+    <b class="ls-label-text ls-hidden-accessible"><%= f.label :email %></b>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",
+                      class: "ls-login-bg-password ls-field-lg", placeholder: "Email" %>
+  </label>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Aguardando confirmação para: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <label class="ls-label">
+    <b class="ls-label-text ls-hidden-accessible"><%= f.label :password %></b>
+    <%= f.password_field :password, autocomplete: "new-password",
+                         class: "ls-login-bg-password ls-field-lg", placeholder: "Nova senha" %>
+  </label>
+
+  <label class="ls-label">
+    <b class="ls-label-text ls-hidden-accessible">
+    <%= f.label :password_confirmation %></b>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password",
+                         class: "ls-login-bg-password ls-field-lg", placeholder: "Confirme a nova senha" %>
+  </label>
+
+  <label class="ls-label">
+    <b class="ls-label-text ls-hidden-accessible"><%= f.label :current_password %></b>
+    <%= f.password_field :current_password, autocomplete: "current-password",
+                         class: "ls-login-bg-password ls-field-lg", placeholder: "Senha atual" %>
+  </label>
+
+  <%= f.submit "Atualizar", class: "ls-btn-primary ls-btn-block ls-btn-lg" %>
+
+  </fieldset>
+<% end %>
+
+<h3>Cancelar minha conta</h3>
+
+<p><%= button_to "Cancelar Conta", registration_path(resource_name), data: { confirm: "Tem certeza?" }, method: :delete, class: "ls-btn-danger ls-btn-block ls-btn-lg" %></p>
+
+<%= link_to "Voltar", :back %>

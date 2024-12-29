@@ -1,0 +1,18 @@
+<h1 class="ls-login-logo">
+Esqueceu sua senha?
+</h1>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, :class => 'ls-form ls-login-form' }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="ls-label">
+    <%= f.label :email, 'E-mail', class: "ls-label-text ls-hidden-accessible" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "E-mail", class: "ls-login-bg-user ls-field-lg" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Envie-me instruções para redefinição de senha", class: "ls-btn-primary ls-btn-block ls-btn-lg" %>
+  </div>
+  <p class="ls-txt-center">Volte para o <%= link_to "login", user_session_path %> </p>
+
+<% end %>

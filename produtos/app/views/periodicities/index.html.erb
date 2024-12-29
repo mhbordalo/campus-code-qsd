@@ -1,0 +1,35 @@
+<%= render 'shared/breadcrumb', links: [
+  ['Início', root_path],
+  [t("activerecord.models.periodicity.other")]
+] %>
+<div class="ls-box ls-board-box">
+  <header class="ls-info-header">
+    <h2 class="ls-title-3"><%= t("activerecord.models.periodicity.other") %></h2>
+    <%= link_to t("models.periodicity.new_periodicity"), new_periodicity_path, class:"ls-btn ls-btn-sm" %>
+  </header>
+  <%if @periodicities.any? %>
+    <table class='ls-table'>
+        <thead>
+          <tr>
+            <th><%= t("activerecord.attributes.periodicity.name") %></th>
+            <th><%= t("activerecord.attributes.periodicity.deadline") %> (<%= t(:n_months) %>)</th>
+            <th class="ls-txt-right"><%= t("actions") %></th>
+          </tr>
+        </thead>
+      <tbody>
+        <% @periodicities.each do |periodicity| %>
+            <tr id="<%= dom_id(periodicity) %>" >
+              <td><%= periodicity.name %></td>
+              <td><%= periodicity.deadline %></td>
+              <td class="ls-txt-right">
+                <%= link_to_edit(edit_periodicity_path(periodicity)) %>
+              </td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="ls-alert-danger"><%= t("models.periodicity.none_periodicity") %></div>
+  <% end %>
+</div>
+

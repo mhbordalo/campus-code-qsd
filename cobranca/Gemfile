@@ -1,0 +1,40 @@
+source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+ruby '3.2.0'
+gem 'faraday'
+
+gem 'bootsnap', require: false
+gem 'cpf_cnpj'
+gem 'devise'
+gem 'image_processing', '~> 1.2'
+gem 'jbuilder'
+gem 'jsbundling-rails'
+gem 'kaminari'
+gem 'kaminari-i18n'
+gem 'puma', '~> 5.0'
+gem 'rails', '~> 7.0.4', '>= 7.0.4.2'
+gem 'sprockets-rails'
+gem 'sqlite3', '~> 1.4'
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'validators'
+
+group :development, :test do
+  gem 'capybara'
+  gem 'cuprite'
+  gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails'
+  gem 'rspec-rails', '~> 6.0.0'
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
+  gem 'simplecov', require: false
+  gem 'tty-spinner'
+end
+
+group :development do
+  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
+  # gem "rack-mini-profiler"
+
+  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
+  # gem "spring"
+end

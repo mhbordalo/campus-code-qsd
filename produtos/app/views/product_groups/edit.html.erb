@@ -1,0 +1,13 @@
+<%= render 'shared/breadcrumb', links: [
+  ['Início', root_path],
+  [t('activerecord.models.product_group.other'), product_groups_path],
+] %>
+
+<div class="ls-box ls-board-box">
+  <header class="ls-info-header">
+    <h2 class="ls-title-3"><%= t('crud.title.edit', model: t('activerecord.models.product_group.one')) %></h2>
+  </header>
+
+  <%= render "form" %>
+
+</div>

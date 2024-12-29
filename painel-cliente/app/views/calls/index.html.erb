@@ -1,0 +1,47 @@
+<div class='ls-container body'>
+  <h1>Chamados</h1>
+  <% if current_user.client? %>
+    <div class='button-new'>
+      <%= link_to 'Novo Chamado', new_call_path, class: 'ls-btn-dark' %>
+    </div>
+  <% end %>
+
+  <% if @calls.any? %>
+    <table class='ls-table ls-table-striped'>
+      <thead>
+        <tr>
+          <th class='col_9 ls-sm-space'><%= t('call_date') %></th>
+          <% if !current_user.client? %>
+            <th class='col_10'><%= t('client') %></th>
+          <% end %>
+          <th class='col_8'><%= t('code') %></th>
+          <th><%= t('subject') %></th>
+          <th class="col_20"><%= t('product') %> - <%= t('order')%></th>
+          <th class='col_8'><%= t('category') %></th>
+          <th class='col_12'><%= t('status') %></th>
+          <th class='col_8'>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @calls.each do |call| %>
+          <tr class="hover_line">
+            <td class="col_9"><%= call.created_at.strftime('%d/%m/%Y') %></td>
+            <% if !current_user.client? %>
+              <td class="col_10"><%= call.user.name %></td>
+            <% end %>
+            <td class="col_8"><%= call.call_code %></td>
+            <td><%= link_to call.subject.truncate(60), call_path(call.id) %></td>
+            <td class="col_20"><%= call.product_id ? call.product.product_plan_name_plus_order_code : ''  %></td>
+            <td class="col_8"><%= call.call_category.description %></td>
+            <td class="col_12"><%= t(call.status) %></td>
+            <td class="col_8">
+              <%= link_to t('close'), close_call_path(call.id), class: 'ls-btn-primary-danger'  if call.open? %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p><%= t('no_existing_calls') %></p>
+  <% end %>
+</div>

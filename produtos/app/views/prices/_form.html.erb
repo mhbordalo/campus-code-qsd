@@ -1,0 +1,35 @@
+<%= form_with(model: price, html:{class: 'ls-form ls-form-horizontal', id: 'create_price'}) do |f| %>
+  <%= render "shared/error_messages", resource: price %>
+  <div class="row">
+    <div class="ls-label col-md-6">
+      <%= f.label :price, class:"ls-label-number" %>
+      <%= f.number_field :price, step: 0.01, placeholder: t('number.currency.format.unit')%>
+    </div>
+    <div class="ls-label col-md-6">
+      <%= f.label :plan_id, class:"ls-label-text" %>
+      <div class="ls-custom-select">
+        <%= f.select :plan_id, plans.collect { |plan| [plan.name, plan.id]},{prompt: ''},{ :class => 'ls-select' } %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="ls-label col-md-6">
+      <%= f.label :periodicity_id, class:"ls-label-text" %>
+      <div class="ls-custom-select">
+        <%= f.select :periodicity_id, @periodicities.collect { |periodicity| [periodicity.name, periodicity.id]},{prompt: ''},{ :class => 'ls-select' } %>
+      </div>
+    </div>
+    <div class="ls-label col-md-6 col-sm-6">
+      <%= f.label :status, class:"ls-label-text" %>
+      <div class="ls-custom-select">
+        <%= f.select(:status, Price.statuses.keys.map{ |k| [t("activerecord.attributes.price.statuses.#{k}"), k] }, class: 'ls-select', include_blank: true) %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="ls-actions-btn">
+      <%= f.submit t("save"), class:"ls-btn" %>
+      <%= link_to t("cancel"), prices_path, class:"ls-btn-danger" %>
+    </div>
+  </div>
+<% end %>

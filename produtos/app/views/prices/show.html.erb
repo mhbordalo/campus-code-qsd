@@ -1,0 +1,49 @@
+<%= render 'shared/breadcrumb', links: [
+  ['Início', root_path],
+  [t('activerecord.models.price.other'), prices_path],
+] %>
+
+<div class="ls-box ls-board-box">
+  <header class="ls-info-header">
+    <h2 class="ls-title-3"><%= t("activerecord.models.price.one") %></h2>
+  </header>
+
+  <label class="ls-label col-md-6 col-lg-8">
+    <b class="ls-label-text"><%= t("activerecord.attributes.price.status") %></b>    
+    <p><%= price_status(@price.status, t("activerecord.attributes.price.statuses.#{@price.status}")) %></p>
+  </label>
+  
+  <label class="ls-label col-md-6 col-lg-8">
+    <b class="ls-label-text">
+      <%= t("activerecord.models.product_group.one") %> /
+      <%= t("activerecord.models.plan.one") %>
+    </b>
+    <p class="ls-form-text">
+      <%= @price.plan.product_group.name %>
+      (<%= @price.plan.product_group.code %>) / 
+      <%= @price.plan.name %>
+    </p>
+  </label>
+  
+  <label class="ls-label col-md-6 col-lg-8">
+    <b class="ls-label-text"><%= t("activerecord.models.periodicity.one") %></b>
+    <p class="ls-form-text"><%= @price.periodicity.name %></p>
+  </label>
+  
+  <label class="ls-label col-md-6 col-lg-8">
+    <b class="ls-label-text"><%= t("activerecord.attributes.plan.description") %></b>
+    <p class="ls-form-text"><%= @price.plan.description %></p>
+  </label>
+  
+  <label class="ls-label col-md-6 col-lg-8">
+    <b class="ls-label-text"><%= t("activerecord.attributes.plan.details") %></b>
+    <p class="ls-form-text"><%= @price.plan.details %></p>
+  </label>
+
+  <label class="ls-label col-md-6 col-lg-8">
+    <b class="ls-label-text"><%= t("activerecord.attributes.price.price") %></b>
+    <p class="ls-form-text"><%= number_to_currency(@price.price) %></p>
+  </label>
+
+<%= link_to t("back"), prices_path, class:"ls-btn" %>
+</div>

@@ -1,0 +1,50 @@
+<div class="ls-box">
+  <%= form_with(model: @bonus_commission, class: "ls-form ls-form-horizontal row") do | f | %>
+    <fieldset>
+      <label class="ls-label col-md-5 <%= (@bonus_commission.errors[:description].empty?)? '':'ls-error' %>">
+        <%= f.label :description, class: "ls-label-text" %>
+        <%= f.text_field :description %>
+        <% if ! @bonus_commission.errors[:description].empty? %>
+          <small class="ls-help-message"><%= @bonus_commission.errors.where(:description).first.full_message %></small>
+        <% end %>
+      </label>
+    </fieldset>
+    <fieldset>
+      <label class="ls-label col-md-5 <%= (@bonus_commission.errors[:start_date].empty?)? '':'ls-error' %>">
+        <%= f.label :start_date, class: "ls-label-text" %>
+        <%= f.date_field :start_date %>
+        <% if ! @bonus_commission.errors[:start_date].empty? %>
+          <small class="ls-help-message"><%= @bonus_commission.errors.where(:start_date).first.full_message %></small>
+        <% end %>
+      </label>
+      <label class="ls-label col-md-5 <%= (@bonus_commission.errors[:end_date].empty?)? '':'ls-error' %>">
+        <%= f.label :end_date, class: "ls-label-text" %>
+        <%= f.date_field :end_date %>
+        <% if ! @bonus_commission.errors[:end_date].empty? %>
+          <small class="ls-help-message"><%= @bonus_commission.errors.where(:end_date).first.full_message %></small>
+        <% end %>
+      </label>
+    </fieldset>
+    <fieldset>
+      <label class="ls-label col-md-5 <%= (@bonus_commission.errors[:commission_perc].empty?)? '':'ls-error' %>">
+        <%= f.label :commission_perc, class: "ls-label-text" %>
+        <%= f.number_field :commission_perc %>
+        <% if ! @bonus_commission.errors[:commission_perc].empty? %>
+          <small class="ls-help-message"><%= @bonus_commission.errors.where(:commission_perc).first.full_message %></small>
+        <% end %>
+      </label>
+      <label class="ls-label col-md-5 <%= (@bonus_commission.errors[:amount_limit].empty?)? '':'ls-error' %>">
+        <%= f.label :amount_limit, class: "ls-label-text" %>
+        <%= f.number_field :amount_limit %>
+        <% if ! @bonus_commission.errors[:amount_limit].empty? %>
+          <small class="ls-help-message"><%= @bonus_commission.errors.where(:amount_limit).first.full_message %></small>
+        <% end %>
+      </label>
+    </fieldset>
+
+    <div class="ls-actions-btn">
+      <%= f.submit 'Salvar', class: "ls-btn-primary" %>
+      <%= link_to 'Cancelar', bonus_commissions_path, class: "ls-btn-primary" %>
+    </div>
+  <% end %>
+</div>

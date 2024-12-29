@@ -1,0 +1,11 @@
+<%= render 'shared/breadcrumb', links: [
+  ['Início', root_path],
+  [t("activerecord.models.periodicity.other"), periodicities_path],
+] %>
+
+<div class="ls-box ls-board-box">
+  <header class="ls-info-header">
+    <h2 class="ls-title-3"><%= t("activerecord.models.periodicity.one") %></h2>
+  </header>
+  <%= render "form", periodicity: @periodicity %>
+</div>

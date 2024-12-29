@@ -1,0 +1,34 @@
+<div class='body'>
+  <h1>Informações sobre o produto: <%= @product.product_plan_name %></h1>
+  
+  <div class='button-new'>
+    <%= link_to 'Voltar', :back, class: 'ls-btn-dark' %>
+  </div>
+  
+  <dl>  
+    <dt class="h_30">
+      <strong>Pedido: </strong>  <%= @product.order_code %>
+    </dt>
+    <dd class="h_30">
+      <strong>Plano: </strong>  <%= @product.product_plan_name %>
+    </dd>
+    <dd class="h_30">
+      <strong>Valor: </strong>  <%= number_to_currency(@product.price) %>
+    </dd>
+    <dd class="h_30">
+      <strong>Data da compra: </strong> <%= l(@product.purchase_date) %>
+    </dd>
+    <dd class="h_30">
+      <strong>Periodicidade: </strong>  <%= @product.product_plan_periodicity %>
+    </dd>
+    <dd class="h_30">  
+      <strong>Desconto: </strong>  <%= @product.discount %>
+    </dd>
+    <dd class="h_30">
+      <strong>Meio de pagamento: </strong>  <%= @product.payment_mode %>
+    </dd>
+    <dd class="h_30">
+      <strong>Status: </strong>  <%= t(@product.status) %> 
+    </dd>
+  </dl>
+</div>

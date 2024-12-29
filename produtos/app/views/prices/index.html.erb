@@ -1,0 +1,39 @@
+<%= render 'shared/breadcrumb', links: [
+  ['Início', root_path],
+  [t("activerecord.models.price.other")]
+] %>
+<div class="ls-box ls-board-box">
+  <header class="ls-info-header">
+    <h2 class="ls-title-3"><%= t("activerecord.models.price.other") %></h2>
+    <%= link_to t("models.price.new_price"), new_price_path, class:"ls-btn ls-btn-sm" %>
+  </header>
+  <% if @prices.any? %>
+    <table class='ls-table'>
+      <thead>
+        <tr>
+          <th><%= t("activerecord.attributes.price.status") %></th>
+          <th><%= t("activerecord.models.plan.one") %></th>
+          <th><%= t("activerecord.models.periodicity.one") %></th>
+          <th><%= t("activerecord.attributes.price.price") %></th>
+          <th class="ls-txt-right"><%= t("actions") %></th>
+        </tr>
+      </thead>
+    <tbody>
+      <% @prices.each do |pr| %>
+        <tr id="<%= dom_id(pr) %>">
+          <td><%= price_status(pr.status, t("activerecord.attributes.price.statuses.#{pr.status}")) %></td>
+          <td><%= pr.plan.name %></td>
+          <td><%= pr.periodicity.name %></td>
+          <td><%= number_to_currency(pr.price) %></td>
+          <td class="ls-txt-right">
+            <%= link_to_show(pr) %>
+            <%= link_to_edit(edit_price_path(pr)) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+  <% else %>
+    <div class="ls-alert-danger"> <%= t("models.price.none_price") %> </div>
+  <% end %>
+</div>  

@@ -1,0 +1,14 @@
+<h2>Esqueceu sua Senha?</h2>
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <fieldset>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <label class="ls-label">
+      <b class="ls-label-text ls-hidden-accessible"><%= f.label :email %></b>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "ls-login-bg-user ls-field-lg", placeholder: "Email" %>
+    </label>
+    <%= f.submit "Enviar instruções por email", class: "ls-btn-primary ls-btn-block ls-btn-lg" %>
+    <p class="ls-txt-center ls-login-signup">
+      <%= render "devise/shared/links" %>
+    </p>
+  </fieldset>
+<% end %>

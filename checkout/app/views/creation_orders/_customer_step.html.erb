@@ -1,0 +1,22 @@
+<%= render "stepper" %>
+
+<div class="ls-box">
+  <h3 class="ls-title-4 ls-md-margin-bottom">Cliente</h3>
+
+  <%= form_with model: @creation_order, class: "ls-form ls-form-horizontal row" do | f | %>
+    <fieldset>
+      <label class="ls-label col-md-3 <%= (@creation_order.errors.empty?)? '':'ls-error' %>">
+        <%= f.label :customer_identification, class: "ls-label-text" %>
+        <%= f.text_field :customer_identification %>
+        <% if ! @creation_order.errors.empty? %>
+          <small class="ls-help-message"><%= @creation_order.errors.first.full_message %></small>
+        <% end %>
+      </label>
+    </fieldset>
+
+    <div class="ls-actions-btn">
+      <%= f.submit 'Pesquisar Cliente', class: "ls-btn-primary" %>
+      <%= link_to "Cancelar", orders_path, class: "ls-btn-primary ls-float-right" %>
+    </div>
+  <% end %>
+</div>

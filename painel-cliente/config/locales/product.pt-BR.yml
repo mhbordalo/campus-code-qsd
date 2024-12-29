@@ -1,0 +1,22 @@
+pt-BR:
+  active: Ativo
+  canceled: Cancelado
+  installed: Instalado
+  yes: Sim
+  no: Não
+  installation_request_sent_successfully: Solicitação de instalação enviada com sucesso
+  error_canceling_product: Erro ao cancelar produto
+  product_canceled_success: Produto cancelado com sucesso
+  renewal_request_sent_successfully: Solicitação de renovação enviada com sucesso
+  uninstalled: Não instalado
+  activerecord:
+    models:
+      product:
+        one: Produto
+        other: Produtos
+    attributes:
+      product:
+        order_code: Pedido
+        purchase_date: Data da Compra
+        product_plan_name: Produto
+        seller: Vendedor

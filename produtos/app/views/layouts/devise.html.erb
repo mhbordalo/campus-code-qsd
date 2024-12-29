@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html class="ls-theme-moss">
+<head>
+    <title>Tela de Login</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <link href="/bower_components/locawebstyle/dist/stylesheets/locastyle.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div class="ls-login-parent">
+        <div class="ls-login-inner">
+            <div class="ls-login-container">
+                <div>
+                    <div class="notice">
+                        <% if flash[:notice] %>
+                            <div class="ls-alert-success ls-alert-fixed-top ls-md-space ls-dismissable" role="alert">
+                                <span data-ls-module="dismiss" class="ls-dismiss">&times;</span>
+                                <%= flash[:notice] %>
+                            </div>
+                        <% end %>
+                    </div>
+                    <div class="alert">
+                        <% if flash[:alert] %>
+                            <div class="ls-alert-danger ls-alert-fixed-top ls-md-space ls-dismissable" role="alert">
+                                <span data-ls-module="dismiss" class="ls-dismiss">&times;</span>
+                                <%= flash[:alert] %>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="ls-login-box">
+                    <%= yield %>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/locawebstyle/dist/javascripts/locastyle.js"></script>
+</html>
+
+
+

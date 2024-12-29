@@ -1,0 +1,39 @@
+<%= render 'shared/breadcrumb', links: [
+  ['Início', root_path],
+  [t("activerecord.models.server.other")]
+] %>
+<div class="ls-box ls-board-box">
+  <header class="ls-info-header">
+    <h2 class="ls-title-3"><%= t("activerecord.models.server.other") %></h2>
+    <%= link_to t("models.server.new_server"), new_server_path, class:"ls-btn ls-btn-sm" %>
+  </header>
+  <% if @servers.any? %>
+    <table class='ls-table'>
+      <thead>
+        <tr>
+          <th><%= t("activerecord.attributes.server.code") %></th>
+          <th><%= t("activerecord.attributes.server.operational_system") %></th>
+          <th><%= t("activerecord.models.product_group.one") %></th>
+          <th><%= t("activerecord.attributes.server.storage_capacity") %></th>
+          <th class="ls-txt-right"><%= t("actions") %></th>
+        </tr>
+      </thead>
+    <tbody>
+      <% @servers.each do |server| %>
+        <tr id="<%= dom_id(server) %>">
+          <td><%= server.code %></td>
+          <td><%= server.operational_system.capitalize %>
+          <td><%= server.product_group.name %></td>
+          <td><%= server.storage_capacity %> GB</td>
+          <td class="ls-txt-right">
+            <%= link_to_show(server) %>
+            <%= link_to_edit(edit_server_path(server)) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+  <% else %>
+    <div class="ls-alert-danger"> <%= t("models.server.none_server") %> </div>
+  <% end %>
+</div>

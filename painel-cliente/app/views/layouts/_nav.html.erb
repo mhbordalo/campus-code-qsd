@@ -1,0 +1,56 @@
+
+ <div class="ls-topbar ">
+
+  <!-- Barra de Notificações -->
+  <div class="ls-notification-topbar">
+
+    <!-- Links de apoio -->
+    <div class="ls-alerts-list">
+      <a href="#" class="ls-ico-bell-o" data-counter="8" data-ls-module="topbarCurtain" data-target="#ls-notification-curtain"><span>Notificações</span></a>
+      <a href="#" class="ls-ico-bullhorn" data-ls-module="topbarCurtain" data-target="#ls-help-curtain"><span>Ajuda</span></a>
+      <a href="#" class="ls-ico-question" data-ls-module="topbarCurtain" data-target="#ls-feedback-curtain"><span>Sugestões</span></a>
+    </div>
+
+    <!-- Dropdown com detalhes da conta de usuário -->
+    <% if user_signed_in? %>
+      <div data-ls-module="dropdown" class="ls-dropdown ls-user-account">
+      
+        <a class="ls-ico-user">
+          <img src="/locawebstyle/assets/images/locastyle/avatar-example.jpg" alt="" />
+          <span class="ls-name"><%= current_user.name %></span>
+        </a>
+
+        <nav class="ls-dropdown-nav ls-user-menu">
+          <ul id="user-menu">
+            <% if user_signed_in? %>
+              <li> <%= link_to 'Editar Conta', edit_user_registration_path, role:"menuitem"%></li>
+              <% if current_user.client? %>
+                <li> <%= link_to 'Inativar Conta', users_inactive_path, role:"menuitem"%></li>
+              <% end %>
+              <li>
+                <%= button_to destroy_user_session_path, method: :delete, style: "border:none; background-color: transparent; padding:12px; padding-right: 150px; margin-left: 6px; cursor: pointer;" do %>
+                  <span style="color: #888888; font-size:16px; font-family: 'Open Sans';">Sair</span>  
+                <% end %>
+              </li>
+            <% end %> 
+          </ul>
+        </nav>
+      </div>
+    <% else %> 
+      <div class="ls-dropdown ls-user-account">
+        <%= link_to 'Login', new_user_session_path, class: "ls-ico-user" %>
+      </div>
+    <% end %>
+  </div>
+
+  <span class="ls-show-sidebar ls-ico-menu"></span>
+
+  <!-- Nome do produto/marca com sidebar -->
+    <h1 class="ls-brand-name">
+      <a href="/orders" class="">
+        <%= image_tag('logo-locaweb.png') %>
+      </a>
+    </h1>
+
+  <!-- Nome do produto/marca sem sidebar quando for o pre-painel  -->
+</div>

@@ -1,0 +1,9 @@
+<% if resource.errors.any? %>
+  <div class="ls-alert-success ls-md-space ls-dismissable" role="alert">
+    <span data-ls-module="dismiss" class="ls-dismiss">&times;</span>
+    <% resource.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </div>
+<% end %>
+

@@ -1,0 +1,21 @@
+<aside class="ls-sidebar">
+
+  <div class="ls-sidebar-inner" style="overflow:hidden;">
+      <h1 class="ls-brand-name ls-ico-users"><a href="/orders">Painel do Cliente</a></h1>
+      <nav class="ls-menu">
+        <ul>
+          <% if user_signed_in? && current_user.client? %>
+            <li><%= link_to 'Pedidos', orders_path, class:"ls-ico-cart" %></li>
+          <% end %>
+           <li><%= link_to 'Produtos', products_path, class:"ls-ico-list2" %></li>
+           <li><%= link_to 'Chamados', calls_path, class:"ls-ico-bullhorn" %></li>
+           
+           <% if user_signed_in? && current_user.administrator? %>
+                  <li> <%= link_to 'Categorias', call_categories_path, class:"ls-ico-cog" %></li>
+           <% end %>
+           
+         </ul>
+      </nav>
+
+  </div>
+</aside>

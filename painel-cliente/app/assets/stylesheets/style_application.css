@@ -1,0 +1,15 @@
+.ls-flash-errors {
+  position: absolute; 
+  z-index:99; 
+  top:70px;
+  right:200px;
+}
+
+.ls-registration-new-title {
+  margin-top: 7%;
+  margin-bottom: 10px;
+}
+
+.ls-d-flex{
+  display: flex;
+}

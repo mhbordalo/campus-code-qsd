@@ -1,0 +1,34 @@
+<div class="ls-login-parent login">
+  <div class="ls-login-inner">
+    <div class="ls-login-container">
+      <div class="ls-login-box login-box">
+        <h1 class="ls-login-logo"> <%= image_tag('logo-locaweb.png') %></h1>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <fieldset>
+
+            <label class="ls-label">
+              <b class="ls-label-text ls-hidden-accessible"><%= f.label :email%></b>
+              
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"ls-login-bg-user ls-field-lg",
+                          id: "userLogin", type: "text", placeholder:"Usuário", required: true  %>
+            </label>
+
+            <label class="ls-label">
+              <b class="ls-label-text ls-hidden-accessible"><%= f.label :password %></b>
+              <div class="ls-prefix-group ls-field-lg">
+                <%= f.password_field :password, autocomplete: "current-password", 
+                          class:"ls-login-bg-password", id:"password_field", placeholder:"Senha", required: true %>
+                <a class="ls-label-text-prefix ls-toggle-pass ls-ico-eye" data-toggle-class="ls-ico-eye, ls-ico-eye-blocked" data-target="#password_field" href="#"></a>
+              </div>
+            </label>
+
+            <%= f.submit "Log in",  value:"Entrar", class:"ls-btn-primary ls-btn-block ls-btn-lg"%>
+            <p class="ls-txt-center ls-login-signup">Não possui um usuário na Locaweb? 
+              <%= link_to 'Cadastre-se agora', new_user_registration_path %> 
+            </p>
+          </fieldset>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

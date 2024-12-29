@@ -1,0 +1,8 @@
+development:
+  base_percentage: 1
+
+test:
+  base_percentage: 1
+
+production:
+  base_percentage: 1

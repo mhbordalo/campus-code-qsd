@@ -1,0 +1,26 @@
+<div class="body">
+  <h1><%= t('close_call') %> <%= @call.call_code %></h1>
+
+  <div class="button-new">
+    <%= link_to t('back'), calls_path, class: 'ls-btn-dark' %>
+  </div>
+
+  <div class="mt_10">
+    <p class="fs_16"><strong><%= t('subject') %>:</strong> <%= @call.subject %></p>
+    <p class="fs_16"><strong><%= t('description') %>:</strong> <%= @call.description %></p>
+  </div>
+
+  <h3 class="ls-title-4 mt_20"><%= t('was_your_problem_solved') %>?</h3>
+  <div class="d_flex mt_10">
+    <%= button_to close_solved_call_path(@call.id), method: :put, class:"ls-btn-primary mt_10 p_10" do %>
+      <span class="px_14">
+        <%= t('yes')%>
+      </span>
+    <% end%>
+    <%= button_to close_unsolved_call_path(@call.id), method: :put, class:"ls-btn-primary-danger m_10" do %>
+      <span class="px_14">
+        <%= t('no')%>
+      </span>
+    <% end%>
+  </div>
+</div>

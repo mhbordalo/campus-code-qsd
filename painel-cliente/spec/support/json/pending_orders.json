@@ -1,0 +1,48 @@
+[
+  {
+    "price": "30.0",
+    "discount": "0.0",
+		"payment_mode": null,
+		"status": "pending",
+		"order_code": "KRR4JOLSRG",
+		"product_plan_name": "Plano Bronze",
+		"product_plan_periodicity": "Mensal",
+    "customer_doc_ident": "62429965704",
+		"paid_at": null,
+		"salesman": {
+			"email": "vendedor@locaweb.com.br",
+			"name": "vendedor"
+		}
+  },
+  {
+    "price": "50.0",
+		"discount": "0.0",
+		"payment_mode": null,
+		"status": "pending",
+		"order_code": "N5KDI4HLYH",
+		"product_plan_name": "Plano Prata",
+		"product_plan_periodicity": "Mensal",
+    "customer_doc_ident": "62429965704",
+		"paid_at": null,
+		"salesman": {
+			"email": "vendedor2@locaweb.com.br",
+			"name": "vendedor2"
+		}
+  },
+	{
+		"id": 3,
+    "price": "30.0",
+    "discount": "0.0",
+		"payment_mode": null,
+		"status": "pending",
+		"order_code": "1000",
+		"product_plan_name": "Plano Bronze",
+		"product_plan_periodicity": "Mensal",
+    "customer_doc_ident": "628.006.557-04",
+		"paid_at": null,
+		"salesman": {
+			"email": "vendedor@locaweb.com.br",
+			"name": "vendedor"
+		}
+  }
+]

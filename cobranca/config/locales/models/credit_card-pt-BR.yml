@@ -1,0 +1,18 @@
+pt-BR:
+  errors:
+    messages:
+      unable to load credit card: 'Não foi possível carregar o cartão de crédito'
+      validation data (month/year): 'Data de validade(mês/ano)'
+      invalid cpf: 'CPF inválido'
+  unable to load credit card: 'Não foi possível carregar o cartão de crédito'
+  activerecord:
+    models:
+      credit_card: 'Cartão de Crédito'
+    attributes:
+       credit_card:
+        card_number: 'Número'
+        validate_month: 'Mês da Validade'
+        validate_year: 'Ano da Validade'
+        cvv: 'Código de Segurança'
+        owner_name: 'Nome do Titular'
+        owner_doc: 'CPF do Titular'

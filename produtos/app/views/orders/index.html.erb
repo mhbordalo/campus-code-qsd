@@ -1,0 +1,14 @@
+<h1>Sales App</h1>
+
+<% if @orders.empty? %>
+  <p>Nenhum pedido encontrado</p>
+<% end %>
+
+<% @orders.each do |order| %>
+	<div>
+    <p><%= link_to order.code, order_path(order.id) %></p>
+    <p><%= order.customer_document %></p>
+    <p><%= order.sold_product %></p>
+    <p><%= order.plan_name %></p>
+  </div>
+<% end %>

@@ -1,0 +1,33 @@
+<%= render 'shared/breadcrumb', links: [
+  ['Início', root_path],
+  [t("activerecord.models.install_product.other")]
+] %>
+<div class="ls-box ls-board-box">
+  <header class="ls-info-header">
+    <h2 class="ls-title-3"><%= t("activerecord.models.install_product.other") %></h2>
+  </header>
+  <% if @install_products.any? %>
+    <table class='ls-table'>
+      <thead>
+        <tr>
+          <th><%= t('activerecord.attributes.install_product.status') %></th>
+          <th><%= t("activerecord.attributes.install_product.customer_document") %></th>
+          <th><%= t("activerecord.attributes.install_product.order_code") %></th>
+          <th><%= t("activerecord.attributes.install_product.server") %></th>
+        </tr>
+      </thead>
+    <tbody>
+      <% @install_products.each do |installation| %>
+        <tr id="<%= dom_id(installation) %>">
+            <td><%= install_product_status(installation.status, t("activerecord.attributes.install_product.statuses.#{installation.status}")) %></td>
+          <td><%= installation.customer_document %></td>
+          <td><%= installation.order_code %></td>
+          <td><%= installation.server.code %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+  <% else %>
+    <div class="ls-alert-danger"> <%= t("models.install_product.none_install_product") %> </div>
+  <% end %>
+</div>

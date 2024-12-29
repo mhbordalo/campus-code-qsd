@@ -1,0 +1,12 @@
+pt-BR:
+  available: 'Disponível'
+  used: 'Utilizado'
+  activerecord:
+    models:
+      coupon:
+        one: "Cupom"
+        other: "Cupons"
+    attributes:
+      coupon:
+        code: 'Código'
+        consumption_date: 'Data de utilização'

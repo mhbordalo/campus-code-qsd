@@ -1,0 +1,38 @@
+<%= render 'shared/breadcrumb', links: [
+  ['Início', root_path],
+  [t("activerecord.models.plan.other")]
+] %>
+
+<div class="ls-box ls-board-box">
+  <header class="ls-info-header">
+    <h2 class="ls-title-3"><%= t("activerecord.models.plan.other") %></h2>
+    <%= btn_new(new_plan_path) %>
+  </header>
+  <% if @plans.any? %>
+    <table class="ls-table">
+      <thead>
+        <tr>
+          <th style="width: 10%"><%= t("activerecord.attributes.plan.status") %></th>
+          <th style="width: 20%"><%= t("activerecord.attributes.plan.name") %></th>
+          <th style="width: 60%"><%= t("activerecord.attributes.plan.description") %></th>
+          <th class="ls-txt-right"><%= t("actions") %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @plans.each do |plan| %>
+          <tr id="<%= dom_id(plan) %>">
+            <td><%= plan_status(plan.status, t("activerecord.attributes.plan.statuses.#{plan.status}")) %></td>
+            <td><%= plan.name %></td>
+            <td><%= plan.description %></td>            
+            <td class="ls-txt-right">
+              <%= link_to_show(plan) %>
+              <%= link_to_edit(edit_plan_path(plan)) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="ls-alert-danger"> <%= t("models.plan.none_plan") %> </div>
+  <% end %>
+</div>

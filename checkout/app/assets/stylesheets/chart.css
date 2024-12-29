@@ -1,0 +1,9 @@
+.chart-container {
+  position: relative;
+  align-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: auto;
+  height: 40vh;
+}

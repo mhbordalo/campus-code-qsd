@@ -1,0 +1,9 @@
+{
+  "name": "painel_cliente",
+  "dependencies": {
+    "esbuild": "^0.17.8"
+  },
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
+  }
+}

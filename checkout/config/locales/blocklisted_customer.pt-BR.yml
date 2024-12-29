@@ -1,0 +1,10 @@
+pt-BR:
+  activerecord:
+    models:
+      blocklisted_customer:
+        one: Cliente bloqueado
+        other: CLientes bloqueados
+    attributes:
+      blocklisted_customer:
+        doc_ident: Número do documento
+        blocklisted_reason: Motivo do bloqueio

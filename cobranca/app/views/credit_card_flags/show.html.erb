@@ -1,0 +1,47 @@
+<h1 class="ls-title-intro ls-ico-home">Detalhes da Bandeira</h1>
+
+<div class="ls-list">
+  <header class="ls-list-header">
+    <div class="ls-list-title col-md-9">
+      <div class="ls-list-title ">
+        <a><%= @credit_card_flag.name %><br><br></a>
+      </div>
+      <% if @credit_card_flag.picture.attached? %>
+        <%= image_tag @credit_card_flag.picture %>
+      <% end %>
+      <div class="ls-list-description">
+        <ul>
+          <li>
+            <p><%= CreditCardFlag.human_attribute_name(:rate) %>: <%= @credit_card_flag.rate %></p>
+          </li>
+          <li>
+            <p><%= CreditCardFlag.human_attribute_name(:maximum_value) %>: <%= @credit_card_flag.maximum_value %><p>
+          </li>
+          <li>
+            <p><%= CreditCardFlag.human_attribute_name(:maximum_number_of_installments) %>: <%= @credit_card_flag.maximum_number_of_installments %></p>
+          </li>
+          <li>
+          <% if @credit_card_flag.cash_purchase_discount? %>
+              <p><%= CreditCardFlag.human_attribute_name(:cash_purchase_discount) %>: Sim</p>
+          <% else %>
+              <p><%= CreditCardFlag.human_attribute_name(:cash_purchase_discount) %>: Não</p>
+          <% end %>
+          </li>
+          <li>
+            <%= CreditCardFlag.human_attribute_name(:status) %>: <%= I18n.translate(@credit_card_flag.status) %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-3 ls-txt-right">
+      <%= link_to 'Editar informações', edit_credit_card_flag_path, class: "ls-btn-primary ls-btn-lg" %>
+    </div>
+  </header>
+
+</div>
+<% if @credit_card_flag.activated? %>
+  <%= button_to 'Marcar como DESATIVADA', deactivated_credit_card_flag_path(@credit_card_flag.id), class: "ls-btn-primary ls-btn-lg" %><br>
+<% else %>
+  <%= button_to 'Marcar como ATIVADA', activated_credit_card_flag_path(@credit_card_flag.id), class: "ls-btn-primary ls-btn-lg" %><br>
+<% end %>
+<%= link_to 'Voltar', credit_card_flags_path, class: "ls-btn-primary ls-btn-lg" %>
